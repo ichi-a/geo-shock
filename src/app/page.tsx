@@ -1,65 +1,112 @@
-import Image from "next/image";
+// 場所: src/app/page.tsx
+import { JsonLd } from "@/components/JsonLd";
 
-export default function Home() {
+export default function HomePage() {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000";
+
+  const siteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "GEO Lab",
+    url: siteUrl,
+    description: "AIクローラーの挙動をリバースエンジニアリングする実験サイト。",
+  };
+
+  const experiments = [
+    { label: "EXP-001", title: "JSON-LDの有無によるクロール頻度の差", href: "/terms/geo-shock-index-a" },
+    { label: "EXP-002", title: "造語「GEOショック指数」のAI反映速度", href: "/terms/geo-shock-index-a" },
+    { label: "EXP-003", title: "ハニーポットによる偽装ボット検出", href: "/experiments" },
+  ];
+
+  const articles = [
+    { href: "/articles/what-is-geo", title: "GEO（生成エンジン最適化）とは何か", label: "GEO特化型", desc: "JSON-LDあり・結論ファースト" },
+    { href: "/articles/why-jsonld-matters", title: "JSON-LDはGEOに効くのか", label: "GEO特化型", desc: "FAQPage Schema使用" },
+    { href: "/articles/ai-and-content-creators", title: "AIはコンテンツを盗んでいるのか", label: "人間向けデコイ", desc: "感情型・JSON-LDなし" },
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div style={{ display: "flex", flexDirection: "column", gap: "3rem" }}>
+      <JsonLd data={siteJsonLd} />
+
+      {/* ヒーロー */}
+      <section style={{
+        background: "var(--surface)",
+        border: "1px solid var(--border)",
+        borderRadius: "var(--radius)",
+        padding: "2.5rem",
+        boxShadow: "var(--shadow-sm)",
+        borderLeft: "4px solid var(--primary)",
+      }}>
+        <p className="section-label" style={{ marginBottom: "1rem" }}>
+          Generative Engine Optimization Lab
+        </p>
+        <h1 style={{ marginBottom: "1rem", fontSize: "2.25rem" }}>
+          AIはあなたのサイトを<br />
+          どう読んでいるのか。
+        </h1>
+        <p style={{ fontSize: "1rem", color: "var(--neutral-600)", lineHeight: 1.75, marginBottom: "1.75rem", maxWidth: "560px" }}>
+          GEO Lab は、AIクローラーの挙動を観測・記録・公開する実験サイトです。
+          JSON-LDの有無、造語の浸透速度を実データで検証します。
+        </p>
+        <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+          <a href="/articles/what-is-geo" className="btn btn-primary">GEOとは何か →</a>
+          <a href="/experiments" className="btn btn-outline">実験ログを見る</a>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
+      </section>
+
+      {/* 実験ステータス */}
+      <section>
+        <p className="section-label" style={{ marginBottom: "1rem" }}>現在進行中の実験</p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1rem" }}>
+          {experiments.map((exp) => (
+            <a
+              key={exp.label}
+              href={exp.href}
+              className="card card-hover"
+              style={{ padding: "1.25rem", textDecoration: "none", display: "block" }}
+            >
+              <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.7rem", color: "var(--neutral-400)", marginBottom: "0.5rem" }}>
+                {exp.label}
+              </p>
+              <p style={{ fontSize: "0.9rem", fontWeight: 600, color: "var(--neutral)", lineHeight: 1.4, marginBottom: "1rem" }}>
+                {exp.title}
+              </p>
+              <span className="badge badge-accent">観測中</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* 記事一覧 */}
+      <section>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1rem" }}>
+          <p className="section-label">記事</p>
+          <a href="/articles" style={{ fontSize: "0.8rem", color: "var(--primary)", textDecoration: "none", fontWeight: 500 }}>
+            すべて見る →
           </a>
         </div>
-      </main>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+          {articles.map((article) => (
+            <a
+              key={article.href}
+              href={article.href}
+              className="card card-hover"
+              style={{ padding: "1rem 1.25rem", textDecoration: "none", display: "flex", alignItems: "center", gap: "1rem" }}
+            >
+              <span className={`badge ${article.label === "人間向けデコイ" ? "badge-orange" : "badge-primary"}`}
+                style={{ flexShrink: 0 }}>
+                {article.label}
+              </span>
+              <div>
+                <p style={{ fontSize: "0.9rem", fontWeight: 600, color: "var(--neutral)", marginBottom: "0.2rem" }}>
+                  {article.title}
+                </p>
+                <p style={{ fontSize: "0.75rem", color: "var(--neutral-400)" }}>{article.desc}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
