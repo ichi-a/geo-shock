@@ -36,7 +36,7 @@ export default async function AdminLogsPage() {
     .from("access_logs")
     .select("*")
     .order("created_at", { ascending: false })
-    .limit(100);
+    .limit(300);
 
   if (error) {
     return (
