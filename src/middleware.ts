@@ -13,12 +13,25 @@ const SKIP_PREFIXES = [
 function detectBot(ua: string): string | null {
   if (!ua) return "EmptyUA";
   if (/GPTBot/i.test(ua)) return "GPTBot";
-  if (/ClaudeBot/i.test(ua)) return "ClaudeBot";
-  if (/Google-Extended/i.test(ua)) return "Google-Extended";
-  if (/Googlebot/i.test(ua)) return "Googlebot";
-  if (/PerplexityBot/i.test(ua)) return "PerplexityBot";
-  if (/Bingbot/i.test(ua)) return "Bingbot";
   if (/ChatGPT-User/i.test(ua)) return "ChatGPT-User";
+  if (/OAI-SearchBot/i.test(ua)) return "OAI-SearchBot";
+  if (/ClaudeBot/i.test(ua)) return "ClaudeBot";
+  if (/Claude-Web/i.test(ua)) return "Claude-Web";
+  if (/anthropic-ai/i.test(ua)) return "AnthropicBot";
+  if (/PerplexityBot/i.test(ua)) return "PerplexityBot";
+  if (/Googlebot/i.test(ua)) return "Googlebot";
+  if (/GoogleOther/i.test(ua)) return "GoogleOther";
+  if (/Google-InspectionTool/i.test(ua)) return "Google-InspectionTool";
+  if (/AdsBot-Google/i.test(ua)) return "AdsBot-Google";
+  if (/Googlebot-Image/i.test(ua)) return "Googlebot-Image";
+  if (/Bingbot/i.test(ua)) return "Bingbot";
+  if (/DuckDuckBot/i.test(ua)) return "DuckDuckBot";
+  if (/YandexBot/i.test(ua)) return "YandexBot";
+  if (/Bytespider/i.test(ua)) return "Bytespider";
+  if (/CCBot/i.test(ua)) return "CCBot";
+  if (/DataForSeoBot/i.test(ua)) return "DataForSeoBot";
+  if (/SemrushBot/i.test(ua)) return "SemrushBot";
+  if (/AhrefsBot/i.test(ua)) return "AhrefsBot";
   return null;
 }
 
