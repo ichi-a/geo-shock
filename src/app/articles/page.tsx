@@ -17,10 +17,10 @@ export default function ArticlesPage() {
         padding: "1.75rem 2rem",
         marginBottom: "1.75rem",
         boxShadow: "var(--shadow-sm)",
-        borderLeft: "4px solid var(--neutral-600)",
+        borderLeft: "4px solid var(--accent)",
       }}>
         <p className="section-label" style={{ marginBottom: "0.5rem" }}>Articles</p>
-        <h1 style={{ fontSize: "1.75rem", marginBottom: "0.5rem" }}>記事一覧</h1>
+        <h1 style={{ fontSize: "1.75rem", marginBottom: "0.5rem"}}>記事一覧</h1>
         <p style={{ fontSize: "0.9rem", color: "var(--neutral-600)", lineHeight: 1.6 }}>
           GEO特化型記事（JSON-LDあり）と人間向け記事（JSON-LDなし）を並行公開しています。
           クローラーのアクセス頻度の差を観測中。
