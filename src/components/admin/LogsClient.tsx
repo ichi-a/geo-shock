@@ -151,13 +151,7 @@ export function LogsClient({ initialLogs }: Props) {
                     className="border-b border-gray-800/50 hover:bg-gray-800/30"
                   >
                     <td className="px-4 py-2.5 font-mono text-gray-400 whitespace-nowrap">
-                      {new Date(log.created_at).toLocaleString("ja-JP", {
-                        month: "2-digit",
-                        day: "2-digit",
-                        hour: "2-digit",
-                        minute: "2-digit",
-                        second: "2-digit",
-                      })}
+                      {new Date(log.created_at).toISOString().replace("T", " ").slice(0, 19)}
                     </td>
                     <td className="px-4 py-2.5">
                       {log.bot_type ? (
