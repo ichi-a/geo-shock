@@ -43,8 +43,17 @@ export async function middleware(request: NextRequest) {
       pathname.includes("/hidden-trap/") || pathname.includes("/llm-internal/");
     const asn = request.headers.get("x-vercel-ip-as-number") || null;
 
+    async function hashIp(ip: string): Promise<string> {
+  const salt = process.env.LOG_SALT || "default_salt";
+  const encoder = new TextEncoder();
+  const data = encoder.encode(ip + salt);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+
     const { error } = await supabase.from("access_logs").insert({
-      ip_hash: ip,
+      ip_hash: await hashIp(ip),
       ua: ua || null,
       path,
       bot_type: detectBot(ua),
