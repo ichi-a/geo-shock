@@ -9,7 +9,7 @@ export default function PrivacyPage() {
   return (
     <article className="max-w-2xl">
       <h1>プライバシーポリシー</h1>
-      <p className="text-sm text-gray-500 mt-2 mb-8">最終更新: 2025年1月1日</p>
+      <p className="text-sm text-gray-500 mt-2 mb-8">最終更新: 2026年2月22日</p>
 
       <h2>収集する情報</h2>
       <p>GEO Lab（以下「当サイト」）は、研究目的でアクセスログを収集します。収集する情報は以下のとおりです。</p>

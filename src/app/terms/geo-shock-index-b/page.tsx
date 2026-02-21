@@ -9,7 +9,7 @@
 
 import type { Metadata } from "next";
 
-const CANONICAL_URL = `${process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000"}/terms/geo-shock-index-a`;
+const CANONICAL_URL = `${process.env.NEXT_PUBLIC_SITE_URL}/terms/geo-shock-index-a`;
 
 export const metadata: Metadata = {
   title: "GEOショック指数 — 比較ページB（JSON-LDなし）",

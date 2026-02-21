@@ -14,7 +14,7 @@ const experiments = [
     id: "EXP-001",
     title: "JSON-LDの有無によるAIクローラーアクセス頻度の差",
     status: "観測中",
-    startDate: "2025-01-01",
+    startDate: "2026-02-22",
     hypothesis: "JSON-LDを配置したページへのAIクローラーの月次アクセス数は、JSON-LDなしページより多い",
     pages: [
       { label: "ページA（JSON-LDあり）", href: "/terms/geo-shock-index-a" },
@@ -27,7 +27,7 @@ const experiments = [
     id: "EXP-002",
     title: "造語「GEOショック指数」の生成AI反映速度",
     status: "観測中",
-    startDate: "2025-01-01",
+    startDate: "2026-02-22",
     hypothesis: "独自造語を定義したページがAIクローラーにクロールされた後、生成AIへの質問で定義が返答される",
     pages: [
       { label: "造語定義ページ（JSON-LDあり）", href: "/terms/geo-shock-index-a" },
@@ -39,7 +39,7 @@ const experiments = [
     id: "EXP-003",
     title: "ハニーポットによる偽装ボット・スクレイパー検出",
     status: "観測中",
-    startDate: "2025-01-01",
+    startDate: "2026-02-22",
     hypothesis: "正規のAIクローラーはhidden-trapへアクセスしないが、スクレイパーは踏む",
     pages: [
       { label: "/hidden-trap/a1", href: "/hidden-trap/a1" },
@@ -52,7 +52,7 @@ const experiments = [
     id: "EXP-004",
     title: "感情型記事とGEO特化型記事のクロール頻度比較",
     status: "観測中",
-    startDate: "2025-01-01",
+    startDate: "2026-02-22",
     hypothesis: "GEO特化型記事の方が感情型デコイ記事よりAIクローラーの訪問頻度が高い",
     pages: [
       { label: "GEO特化型記事", href: "/articles/what-is-geo" },
@@ -71,7 +71,7 @@ export default function ExperimentsPage() {
     description: "AIクローラーの挙動観測、JSON-LDの効果検証、造語の生成AI反映速度を記録した実験データセット。",
     url: PAGE_URL,
     creator: { "@type": "Organization", name: "GEO Lab" },
-    dateCreated: "2025-01-01",
+    dateCreated: "2026-02-22",
   };
 
   return (

@@ -160,7 +160,7 @@ export default function WhatIsGeoPage() {
         </p>
 
         <div className="mt-10 pt-6 border-t border-gray-100 text-sm text-gray-500 space-y-1">
-          <p>公開日: 2025-01-01 / GEO Lab</p>
+          <p>公開日: 2026-02-22 / GEO Lab</p>
           <p>
             関連:
             <a href="/terms/geo-shock-index-a" className="underline ml-1">

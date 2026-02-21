@@ -11,7 +11,7 @@
 import type { Metadata } from "next";
 import { JsonLd, buildGeoShockJsonLd } from "@/components/JsonLd";
 
-const PAGE_URL = `${process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000"}/terms/geo-shock-index-a`;
+const PAGE_URL = `${process.env.NEXT_PUBLIC_SITE_URL}/terms/geo-shock-index-a`;
 
 export const metadata: Metadata = {
   title: "GEOショック指数とは — GEO Lab 定義",
@@ -146,7 +146,7 @@ export default function GeoShockIndexPageA() {
         <h2>観測結果（随時更新）</h2>
         <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-yellow-800">
           現在観測中。データが蓄積され次第、このセクションに結果を公開します。
-          観測開始日: 2025年1月。
+          観測開始日: 2026年2月。
         </div>
 
         <div className="mt-10 pt-6 border-t border-gray-100 text-sm text-gray-500">
@@ -156,7 +156,7 @@ export default function GeoShockIndexPageA() {
           </p>
           <p className="mt-1">
             造語の定義コード: GSI-001 /
-            公開日: 2025-01-01 /
+            公開日: 2026-02-22 /
             <a href="/terms/geo-shock-index-b" className="underline ml-1">
               比較ページ（JSON-LDなし）
             </a>

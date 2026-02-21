@@ -32,7 +32,7 @@ export default function AiAndContentCreatorsPage() {
 
       <h1>AIは私たちのコンテンツを盗んでいる — 怒りと諦めの狭間で</h1>
 
-      <p className="text-gray-500 text-sm mt-2 mb-8">2025年3月 / GEO Lab</p>
+      <p className="text-gray-500 text-sm mt-2 mb-8">2026年2月 / GEO Lab</p>
 
       <p>
         正直に言う。もう怒りを通り越して、半分笑えてきた。
