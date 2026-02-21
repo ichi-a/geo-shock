@@ -6,6 +6,7 @@ const SKIP_PREFIXES = [
   "/favicon.ico",
   "/robots.txt",
   "/sitemap.xml",
+  "/api/",
 ];
 
 export async function middleware(request: NextRequest) {
@@ -20,38 +21,45 @@ export async function middleware(request: NextRequest) {
 
   const ip =
     request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-    request.headers.get("x-real-ip") ||
     "unknown";
-
   const ua = request.headers.get("user-agent") || "";
   const path = pathname + (request.nextUrl.search || "");
   const isHoneypot =
     pathname.includes("/hidden-trap/") || pathname.includes("/llm-internal/");
   const asn = request.headers.get("x-vercel-ip-as-number") || null;
 
-  // Supabaseに直接書き込む
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (supabaseUrl && supabaseKey) {
-    fetch(`${supabaseUrl}/rest/v1/access_logs`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "apikey": supabaseKey,
-        "Authorization": `Bearer ${supabaseKey}`,
-        "Prefer": "return=minimal",
-      },
-      body: JSON.stringify({
-        ip_hash: ip, // 暫定でIPそのまま（後でハッシュ化対応）
-        ua: ua || null,
-        path,
-        bot_type: detectBot(ua),
-        verification_level: 0,
-        is_honeypot: isHoneypot,
-        asn: asn || null,
-      }),
-    }).catch(() => {});
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 2000);
+
+    try {
+      await fetch(`${supabaseUrl}/rest/v1/access_logs`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "apikey": supabaseKey,
+          "Authorization": `Bearer ${supabaseKey}`,
+          "Prefer": "return=minimal",
+        },
+        body: JSON.stringify({
+          ip_hash: ip,
+          ua: ua || null,
+          path,
+          bot_type: detectBot(ua),
+          verification_level: 0,
+          is_honeypot: isHoneypot,
+          asn: asn || null,
+        }),
+        signal: controller.signal,
+      });
+    } catch (e) {
+      console.error("[GEO Lab] log error:", e);
+    } finally {
+      clearTimeout(timeout);
+    }
   }
 
   return NextResponse.next();
@@ -70,5 +78,5 @@ function detectBot(ua: string): string | null {
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|api/log).*)"],
+  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
 };
