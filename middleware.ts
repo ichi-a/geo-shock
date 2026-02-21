@@ -23,6 +23,7 @@ function detectBot(ua: string): string | null {
 }
 
 export async function middleware(request: NextRequest) {
+  console.log("[MW] hit:", request.nextUrl.pathname);
   const { pathname } = request.nextUrl;
 
   const shouldSkip = SKIP_PREFIXES.some((p) => pathname.startsWith(p));
