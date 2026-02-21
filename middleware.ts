@@ -82,17 +82,15 @@ export function middleware(request: NextRequest) {
 
   // /api/log への内部fetch（fire-and-forget）
   // エラーを握りつぶすことで、ロギング失敗がユーザー体験に影響しない
-  const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    `https://${request.headers.get("host")}`;
+const host = request.headers.get("host") ?? "localhost:3000";
+const protocol = host.includes("localhost") ? "http" : "https";
+const siteUrl = `${protocol}://${host}`;
 
-  fetch(`${siteUrl}/api/log`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(logPayload),
-  }).catch(() => {
-    // ロギング失敗は無視（ユーザーへの影響ゼロを優先）
-  });
+fetch(`${siteUrl}/api/log`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(logPayload),
+}).catch(() => {});
 
   return response;
 }
