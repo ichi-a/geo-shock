@@ -48,6 +48,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <a href="/privacy" style={{ fontSize: "0.75rem", color: "var(--neutral-400)", textDecoration: "underline" }}>
               プライバシーポリシー
             </a>
+            <a href="/contact" style={{ fontSize: "0.75rem", color: "var(--neutral-400)", textDecoration: "underline" }}>
+              お問い合わせ
+            </a>
+            <small style={{ fontSize: "0.75rem", color: "var(--neutral-400)" }}>
+              &copy; 2026 N-S
+            </small>
           </div>
         </footer>
 

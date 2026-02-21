@@ -4,7 +4,7 @@ export default function ArticlesPage() {
   const articles = [
     { href: "/articles/what-is-geo", title: "GEO（生成エンジン最適化）とは何か", label: "GEO特化型", desc: "JSON-LDあり・構造化記述・結論ファースト", type: "primary" },
     { href: "/articles/why-jsonld-matters", title: "JSON-LDはGEOに効くのか — 実験設計と仮説", label: "GEO特化型", desc: "JSON-LDあり・FAQPage Schema使用", type: "primary" },
-    { href: "/articles/ai-and-content-creators", title: "AIはコンテンツを盗んでいるのか", label: "人間向けデコイ", desc: "感情的・クリック誘引型・構造化データなし", type: "decoy" },
+    { href: "/articles/ai-and-content-creators", title: "AIはコンテンツを盗んでいるのか", label: "人間向け", desc: "感情的・クリック誘引型・構造化データなし", type: "decoy" },
   ];
 
   return (
@@ -22,7 +22,7 @@ export default function ArticlesPage() {
         <p className="section-label" style={{ marginBottom: "0.5rem" }}>Articles</p>
         <h1 style={{ fontSize: "1.75rem", marginBottom: "0.5rem" }}>記事一覧</h1>
         <p style={{ fontSize: "0.9rem", color: "var(--neutral-600)", lineHeight: 1.6 }}>
-          GEO特化型記事（JSON-LDあり）と人間向けデコイ記事（JSON-LDなし）を並行公開しています。
+          GEO特化型記事（JSON-LDあり）と人間向け記事（JSON-LDなし）を並行公開しています。
           クローラーのアクセス頻度の差を観測中。
         </p>
       </div>
@@ -39,7 +39,7 @@ export default function ArticlesPage() {
           <span>JSON-LDあり・構造化記述</span>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.8rem", color: "var(--neutral-600)" }}>
-          <span className="badge badge-orange">人間向けデコイ</span>
+          <span className="badge badge-orange">人間向け</span>
           <span>感情型・JSON-LDなし（対照群）</span>
         </div>
       </div>

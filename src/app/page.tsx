@@ -2,7 +2,7 @@
 import { JsonLd } from "@/components/JsonLd";
 
 export default function HomePage() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
   const siteJsonLd = {
     "@context": "https://schema.org",

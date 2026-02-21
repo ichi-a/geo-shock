@@ -31,7 +31,7 @@ export default async function AdminLogsPage() {
     redirect("/admin/login");
   }
 
-  // 初期データ取得（最新100件）
+  // 初期データ取得（最新300件）
   const { data: logs, error } = await supabaseAdmin
     .from("access_logs")
     .select("*")
@@ -73,7 +73,7 @@ export default async function AdminLogsPage() {
         {/* サマリーカード */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {[
-            { label: "総アクセス（直近100件）", value: logs?.length ?? 0 },
+            { label: "総アクセス（直近300件）", value: logs?.length ?? 0 },
             { label: "確認済みボット", value: stats.confirmedBots },
             { label: "ハニーポット踏破", value: stats.honeypotHits },
             { label: "未判定（Level 0）", value: stats.unknowns },
