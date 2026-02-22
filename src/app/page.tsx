@@ -56,7 +56,12 @@ export default function HomePage() {
 
       {/* 実験ステータス */}
       <section>
-        <p className="section-label" style={{ marginBottom: "1rem" }}>現在進行中の実験</p>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1rem" }}>
+          <p className="section-label" style={{ marginBottom: "1rem" }}>現在進行中の実験</p>
+          <a href="/experiments" style={{ fontSize: "0.8rem", color: "var(--primary)", textDecoration: "none", fontWeight: 500 }}>
+              すべて見る →
+          </a>
+        </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1rem" }}>
           {experiments.map((exp) => (
             <a
