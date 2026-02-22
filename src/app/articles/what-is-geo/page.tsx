@@ -163,7 +163,10 @@ export default function WhatIsGeoPage() {
           <p>公開日: 2026-02-22 / GEO Lab</p>
           <p>
             関連:
-            <a href="/terms/geo-shock-index-a" className="underline ml-1">
+            <a href="/terms/geo-shock-a" className="underline ml-2">
+              GEOショックの定義
+            </a>
+            <a href="/terms/geo-shock-index-a" className="underline ml-2">
               GEOショック指数の定義
             </a>
             <a href="/articles/why-jsonld-matters" className="underline ml-2">
