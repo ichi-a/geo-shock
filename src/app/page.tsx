@@ -15,7 +15,7 @@ export default function HomePage() {
   const experiments = [
     { label: "EXP-001", title: "JSON-LDの有無によるクロール頻度の差", href: "/terms/geo-shock-index-a" },
     { label: "EXP-002", title: "造語「GEOショック指数」のAI反映速度", href: "/terms/geo-shock-index-a" },
-    { label: "EXP-003", title: "ハニーポットによる偽装ボット検出　　", href: "/experiments" },
+    { label: "EXP-003", title: "ハニーポットによる無差別クローラー検出", href: "/experiments" },
   ];
 
   const articles = [
