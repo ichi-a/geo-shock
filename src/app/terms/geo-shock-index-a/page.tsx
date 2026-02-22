@@ -145,8 +145,10 @@ export default function GeoShockIndexPageA() {
 
         <h2>観測結果（随時更新）</h2>
         <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-yellow-800">
-          現在観測中。データが蓄積され次第、このセクションに結果を公開します。
-          観測開始日: 2026年2月。
+          中間報告
+観測日: 2026年2月22日
+結果: Perplexityが造語「GEOショック指数」の定義を正確に回答
+反映速度: 公開から約1日
         </div>
 
         <div className="mt-10 pt-6 border-t border-gray-100 text-sm text-gray-500">

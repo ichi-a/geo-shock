@@ -59,5 +59,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 0.9,
     },
+    {
+      url: `${siteUrl}/terms/geo-shock-a`,
+      lastModified: new Date("2026-02-22"),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+// geo-shock-b はnoindexのため追加しない
   ];
 }

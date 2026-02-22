@@ -33,7 +33,7 @@ const experiments = [
       { label: "造語定義ページ（JSON-LDあり）", href: "/terms/geo-shock-index-a" },
     ],
     metric: "初回反映までの日数、定義一致度（Δm）",
-    result: "観測中 — AIへの定期質問を実施中",
+    result: "観測日: 2026年2月22日　結果: Perplexityが造語「GEOショック指数」の定義を正確に回答。　反映速度: 公開から約1日",
   },
   {
     id: "EXP-003",
@@ -59,6 +59,19 @@ const experiments = [
       { label: "人間向けデコイ記事", href: "/articles/ai-and-content-creators" },
     ],
     metric: "月次クロール回数の差",
+    result: "観測中",
+  },
+  {
+    id: "EXP-005",
+    title: "造語「GEOショック」の生成AI反映速度",
+    status: "観測中",
+    startDate: "2026-02-22",
+    hypothesis: "GEOショックという概念がJSON-LDで定義されたページがクロールされた後、生成AIへの質問で定義が返答される",
+    pages: [
+      { label: "ページA（JSON-LDあり）", href: "/terms/geo-shock-a" },
+      { label: "ページB（JSON-LDなし）", href: "/terms/geo-shock-b" },
+    ],
+    metric: "初回反映までの日数、定義一致度",
     result: "観測中",
   },
 ];
