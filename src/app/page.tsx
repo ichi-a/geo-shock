@@ -55,7 +55,7 @@ export default function HomePage() {
       </section>
 
       {/* 実験ステータス */}
-      <section>
+      <section className="my-10">
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1rem" }}>
           <p className="section-label" style={{ marginBottom: "1rem" }}>現在進行中の実験</p>
           <a href="/experiments" style={{ fontSize: "0.8rem", color: "var(--primary)", textDecoration: "none", fontWeight: 500 }}>

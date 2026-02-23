@@ -65,6 +65,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.9,
     },
-// geo-shock-b はnoindexのため追加しない
+    {
+      url: `${siteUrl}/terms`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+
   ];
 }

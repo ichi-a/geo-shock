@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
   { href: "/articles",    label: "記事" },
-  { href: "/terms/geo-shock-index-a", label: "造語実験" },
+  { href: "/terms", label: "造語実験" },
   { href: "/experiments", label: "実験ログ" },
   { href: "/stats",       label: "観測レポート" },  // ← 追加
 ];
