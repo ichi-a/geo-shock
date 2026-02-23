@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { HoneypotLinks } from "@/components/HoneypotLinks";
 import { NavHeader } from "@/components/NavHeader";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   title: {
@@ -58,6 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </footer>
 
         <HoneypotLinks />
+        <GoogleAnalytics gaId="G-BH468TNK2B" />
       </body>
     </html>
   );
