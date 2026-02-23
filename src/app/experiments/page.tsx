@@ -85,6 +85,7 @@ export default function ExperimentsPage() {
     url: PAGE_URL,
     creator: { "@type": "Organization", name: "GEO Lab" },
     dateCreated: "2026-02-22",
+    license: "https://creativecommons.org/licenses/by/4.0/",
   };
 
   return (

@@ -1,17 +1,18 @@
-// 場所: src/components/NavHeader.tsx
 "use client";
 
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 const NAV_LINKS = [
   { href: "/articles",    label: "記事" },
-  { href: "/terms", label: "造語実験" },
+  { href: "/terms",       label: "造語実験" },
   { href: "/experiments", label: "実験ログ" },
-  { href: "/stats",       label: "観測レポート" },  // ← 追加
+  { href: "/stats",       label: "観測レポート" },
 ];
 
 export function NavHeader() {
   const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
@@ -30,7 +31,7 @@ export function NavHeader() {
       <div style={{
         maxWidth: "900px",
         margin: "0 auto",
-        padding: "0 1.5rem",
+        padding: "0 1.25rem",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
@@ -46,6 +47,7 @@ export function NavHeader() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            flexShrink: 0,
           }}>
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <circle cx="7" cy="7" r="3" fill="white" />
@@ -63,8 +65,8 @@ export function NavHeader() {
           </span>
         </a>
 
-        {/* ナビ */}
-        <nav style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
+        {/* PC用ナビ（sm以上で表示） */}
+        <nav className="hidden sm:flex items-center gap-1">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
@@ -81,6 +83,7 @@ export function NavHeader() {
                   background: active ? "var(--primary-light)" : "transparent",
                   position: "relative",
                   transition: "all 0.15s ease",
+                  whiteSpace: "nowrap",
                 }}
               >
                 {link.label}
@@ -100,7 +103,67 @@ export function NavHeader() {
             );
           })}
         </nav>
+
+        {/* ハンバーガーボタン（sm未満で表示） */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="flex sm:hidden flex-col justify-center gap-1"
+          aria-label="メニュー"
+          style={{
+            background: "none",
+            border: "1px solid var(--border)",
+            borderRadius: "var(--radius-sm)",
+            padding: "0.45rem 0.55rem",
+            cursor: "pointer",
+          }}
+        >
+          <span style={{ display: "block", width: "18px", height: "1.5px", background: "var(--neutral)", borderRadius: "2px", transition: "all 0.2s", transform: menuOpen ? "rotate(45deg) translate(0px, 5px)" : "none" }} />
+          <span style={{ display: "block", width: "18px", height: "1.5px", background: "var(--neutral)", borderRadius: "2px", transition: "all 0.2s", opacity: menuOpen ? 0 : 1 }} />
+          <span style={{ display: "block", width: "18px", height: "1.5px", background: "var(--neutral)", borderRadius: "2px", transition: "all 0.2s", transform: menuOpen ? "rotate(-45deg) translate(0px, -5px)" : "none" }} />
+        </button>
       </div>
+
+      {/* SP用メニュー（sm未満でmenuOpenのときだけ表示） */}
+      {menuOpen && (
+        <div className="sm:hidden" style={{
+          borderTop: "1px solid var(--border)",
+          background: "var(--surface)",
+          padding: "0.5rem 1.25rem 1rem",
+        }}>
+          {NAV_LINKS.map((link) => {
+            const active = isActive(link.href);
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  padding: "0.75rem 0.5rem",
+                  fontSize: "0.9rem",
+                  fontWeight: active ? 600 : 400,
+                  color: active ? "var(--primary)" : "var(--neutral-600)",
+                  textDecoration: "none",
+                  borderBottom: "1px solid var(--border)",
+                }}
+              >
+                {active && (
+                  <span style={{
+                    width: "6px",
+                    height: "6px",
+                    borderRadius: "50%",
+                    background: "var(--primary)",
+                    flexShrink: 0,
+                  }} />
+                )}
+                {link.label}
+              </a>
+            );
+          })}
+        </div>
+      )}
     </header>
   );
 }
