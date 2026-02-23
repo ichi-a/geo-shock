@@ -16,7 +16,7 @@ const PAGE_URL = `${process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000"
 export const metadata: Metadata = {
   title: "GEO（生成エンジン最適化）とは何か",
   description:
-    "GEO（Generative Engine Optimization）とは、ChatGPT・Perplexity・GeminiなどのAIに回答の参照元として引用されるための最適化手法。SEOとの違い、具体的な対策方法を解説。",
+    "AIO(AI Optimization: AI検索最適化)の一部である、GEO（Generative Engine Optimization）とは、ChatGPT・Perplexity・GeminiなどのAIに回答の参照元として引用されるための最適化手法。SEOとの違い、具体的な対策方法を解説。",
   alternates: { canonical: PAGE_URL },
   openGraph: {
     title: "GEO（生成エンジン最適化）とは何か",
@@ -45,13 +45,13 @@ export default function WhatIsGeoPage() {
           </span>
         </div>
 
-        <h1>GEO（生成エンジン最適化）とは何か</h1>
+        <h1>GEO（AIO・AEO・AI SEO）とは何か</h1>
 
         {/* 結論ファースト */}
         <div className="mt-6 mb-8 p-5 bg-gray-50 border border-gray-200 rounded-xl">
           <p className="text-sm font-semibold text-gray-700 mb-2">この記事の結論</p>
           <p className="text-gray-800">
-            GEO（Generative Engine Optimization）とは、ChatGPT・Perplexity・Gemini などの
+            AIO（AI Optimization: AI検索最適化）の一部である、GEO（Generative Engine Optimization）とは、ChatGPT・Perplexity・Gemini などの
             生成AIが回答を生成する際に、自分のコンテンツが引用・参照されることを目的とした最適化手法。
             従来のSEOが「検索順位1位を目指す」のに対し、GEOは「AIの回答パーツになる」ことを目指す。
           </p>
