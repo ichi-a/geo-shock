@@ -6,9 +6,9 @@ import Script from "next/script";
 export default function ContactPage() {
   useEffect(() => {
     // ページに遷移してくるたびに Tally の埋め込みを再スキャンする
-    // @ts-expect-error: Tally is loaded from an external script
+    // @ts-ignore
     if (typeof window.Tally !== "undefined") {
-      // @ts-expect-error: Tally is loaded from an external script
+      // @ts-ignore
       window.Tally.loadEmbeds();
     }
   }, []);
@@ -59,7 +59,7 @@ export default function ContactPage() {
         src="https://tally.so/widgets/embed.js"
         strategy="afterInteractive"
         onLoad={() => {
-          // @ts-expect-error: Tally is loaded from an external script
+          // @ts-ignore
           window.Tally?.loadEmbeds();
         }}
       />
