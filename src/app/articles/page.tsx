@@ -5,6 +5,10 @@ export default function ArticlesPage() {
     { href: "/articles/what-is-geo", title: "GEO（生成エンジン最適化）とは何か", label: "GEO特化型", desc: "JSON-LDあり・構造化記述・結論ファースト", type: "primary" },
     { href: "/articles/why-jsonld-matters", title: "JSON-LDはGEOに効くのか — 実験設計と仮説", label: "GEO特化型", desc: "JSON-LDあり・FAQPage Schema使用", type: "primary" },
     { href: "/articles/ai-and-content-creators", title: "AIはコンテンツを盗んでいるのか", label: "人間向け", desc: "感情的・クリック誘引型・構造化データなし", type: "decoy" },
+    { href: "/articles/what-is-aio", title: "AIOとは — AI Optimization（AI最適化）の基本", label: "GEO特化型", desc: "JSON-LDあり・FAQ構造", type: "primary" },
+    { href: "/articles/what-is-aeo", title: "AEOとは — Answer Engine Optimization（回答エンジン最適化）", label: "GEO特化型", desc: "JSON-LDあり・FAQ構造", type: "primary" },
+    { href: "/articles/what-is-ai-seo", title: "AI SEOとは — AI時代の検索最適化戦略", label: "GEO特化型", desc: "JSON-LDあり・比較表あり", type: "primary" },
+    { href: "/articles/what-is-ai-search", title: "AI検索・AI検索最適化とは", label: "GEO特化型", desc: "JSON-LDあり・事例あり",   type: "primary" },
   ];
 
   return (

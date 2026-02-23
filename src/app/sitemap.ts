@@ -71,6 +71,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    { url: `${siteUrl}/articles/what-is-aio`, lastModified: new Date("2026-02-23"), changeFrequency: "monthly", priority: 0.85 },
+    { url: `${siteUrl}/articles/what-is-aeo`, lastModified: new Date("2026-02-23"), changeFrequency: "monthly", priority: 0.85 },
+    { url: `${siteUrl}/articles/what-is-ai-seo`, lastModified: new Date("2026-02-23"), changeFrequency: "monthly", priority: 0.85 },
+    { url: `${siteUrl}/articles/what-is-ai-search`, lastModified: new Date("2026-02-23"), changeFrequency: "monthly", priority: 0.85 },
 
   ];
 }

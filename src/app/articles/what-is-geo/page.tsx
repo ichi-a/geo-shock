@@ -1,22 +1,15 @@
-// ============================================
-// 場所: app/articles/what-is-geo/page.tsx
-// ============================================
-// GEO特化型記事（実験群）
-// - JSON-LDあり（Article + FAQPage）
-// - 結論ファーストの構成
-// - テーブルタグを使った情報整理
-// - AIがスキャンしやすい見出し構造
-// ============================================
-
+// 場所: src/app/articles/what-is-geo/page.tsx
 import type { Metadata } from "next";
-import { JsonLd, buildGeoArticleJsonLd } from "@/components/JsonLd";
+import { JsonLd } from "@/components/JsonLd";
+import { Disclaimer } from "@/components/Disclaimer";
 
-const PAGE_URL = `${process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000"}/articles/what-is-geo`;
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.geo-shock.com";
+const PAGE_URL = `${SITE_URL}/articles/what-is-geo`;
 
 export const metadata: Metadata = {
   title: "GEO（生成エンジン最適化）とは何か",
   description:
-    "AIO(AI Optimization: AI検索最適化)の一部である、GEO（Generative Engine Optimization）とは、ChatGPT・Perplexity・GeminiなどのAIに回答の参照元として引用されるための最適化手法。SEOとの違い、具体的な対策方法を解説。",
+    "GEO（Generative Engine Optimization）とは、ChatGPTやPerplexityなどの生成AIに自社コンテンツを引用させるための最適化手法。AIO・AEO・AI SEOとの関係も解説。",
   alternates: { canonical: PAGE_URL },
   openGraph: {
     title: "GEO（生成エンジン最適化）とは何か",
@@ -25,155 +18,225 @@ export const metadata: Metadata = {
   },
 };
 
+const SYNONYMS = [
+  { href: "/articles/what-is-aio",       label: "AIO（AI Optimization）" },
+  { href: "/articles/what-is-aeo",       label: "AEO（Answer Engine Optimization）" },
+  { href: "/articles/what-is-ai-seo",    label: "AI SEO" },
+  { href: "/articles/what-is-ai-search", label: "AI検索最適化" },
+];
+
 export default function WhatIsGeoPage() {
-  const jsonLd = buildGeoArticleJsonLd({
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${PAGE_URL}#article`,
     headline: "GEO（生成エンジン最適化）とは何か",
     description:
-      "GEO（Generative Engine Optimization）の定義・SEOとの違い・具体的な対策を解説する。",
+      "GEO（Generative Engine Optimization）とは、ChatGPTやPerplexityなど生成AIの回答に自社コンテンツを引用させるための最適化手法。",
+    url: PAGE_URL,
     datePublished: "2025-01-01",
-    pageUrl: PAGE_URL,
-  });
+    dateModified: "2026-02-23",
+    author: { "@type": "Organization", name: "GEO Lab", url: SITE_URL },
+    publisher: { "@type": "Organization", name: "GEO Lab" },
+    about: {
+      "@type": "DefinedTerm",
+      name: "GEO",
+      alternateName: ["Generative Engine Optimization", "生成エンジン最適化", "AIO", "AEO", "AI SEO"],
+      description:
+        "ChatGPT・Perplexity・Google AI Overviewsなどの生成AIが回答を構成する際に、自社コンテンツが引用・推薦されるよう最適化する手法。",
+    },
+  };
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "GEOとSEOの違いは何ですか？",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "SEOは検索エンジンの順位を上げてクリックを獲得することを目的とします。GEOはAIが生成する回答に引用されることを目的とし、クリックではなく「AIによる言及」を成果指標とします。",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "GEOとAEO・AIOは同じですか？",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "実質的にほぼ同義です。AEO（Answer Engine Optimization）は回答エンジンへの最適化、AIO（AI Optimization）はAI Overviews対策に焦点を当てた用語ですが、対策内容はGEOと大きく重なります。GEO Labでは生成エンジン全般への最適化という意味でGEOという用語を使用しています。",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "GEO対策で最も効果的なことは何ですか？",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "JSON-LDによる構造化データの実装と、一次情報・独自データを含む明確な記述が最も効果的とされています。GEO Labの実験でも、JSON-LDの有無がAIクローラーの来訪頻度に影響することが示唆されています。",
+        },
+      },
+    ],
+  };
 
   return (
     <>
-      <JsonLd data={jsonLd} />
+      <JsonLd data={articleJsonLd} />
+      <JsonLd data={faqJsonLd} />
 
-      <article className="max-w-2xl">
-        <div className="mb-6">
-          <span className="text-xs bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-3 py-1">
-            GEO特化型記事 / JSON-LDあり
-          </span>
+      <article style={{ maxWidth: "680px" }}>
+        {/* 実験ラベル */}
+        <div className="experiment-tag-bar">
+          <span className="badge badge-primary">GEO特化型</span>
+          <span style={{ fontSize: "0.78rem", color: "var(--neutral-400)" }}>JSON-LDあり・構造化記述・結論ファースト</span>
         </div>
 
-        <h1>GEO（AIO・AEO・AI SEO）とは何か</h1>
+        <h1>GEO（生成エンジン最適化）とは何か</h1>
 
-        {/* 結論ファースト */}
-        <div className="mt-6 mb-8 p-5 bg-gray-50 border border-gray-200 rounded-xl">
-          <p className="text-sm font-semibold text-gray-700 mb-2">この記事の結論</p>
-          <p className="text-gray-800">
-            AIO（AI Optimization: AI検索最適化）の一部である、GEO（Generative Engine Optimization）とは、ChatGPT・Perplexity・Gemini などの
-            生成AIが回答を生成する際に、自分のコンテンツが引用・参照されることを目的とした最適化手法。
-            従来のSEOが「検索順位1位を目指す」のに対し、GEOは「AIの回答パーツになる」ことを目指す。
+        {/* 定義ボックス */}
+        <div className="definition-box">
+          <p style={{ fontSize: "0.75rem", fontWeight: 600, color: "var(--primary)", marginBottom: "0.5rem", fontFamily: "'DM Mono', monospace", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+            定義
+          </p>
+          <p style={{ lineHeight: 1.8 }}>
+            <strong>GEO（Generative Engine Optimization、生成エンジン最適化）</strong>とは、
+            ChatGPT・Perplexity・Google AI OverviewsなどのAIが回答を構成する際に、
+            自社コンテンツが引用・推薦されるよう最適化する手法。
+            従来のSEOが「検索結果の順位」を追求するのに対し、
+            GEOは「AIの回答への引用」を成果指標とする。
           </p>
         </div>
 
-        <h2>SEOとGEOの違い</h2>
+        <h2>なぜGEOが必要か</h2>
         <p>
-          従来のSEO（検索エンジン最適化）は、Googleのアルゴリズムに対して
-          コンテンツを最適化することで検索順位を上げ、クリックを獲得することが目的だった。
-          しかし2024〜2026年にかけて、ユーザーの情報収集行動は大きく変化した。
+          ユーザーの情報収集行動が変化している。かつて「Google検索 → リンクをクリック → サイトで情報を読む」というフローが主流だったが、現在は「AIに質問 → AIが直接回答」という形が急速に普及している。
+        </p>
+        <p>
+          この変化はWebサイト運営者にとって深刻な問題を引き起こす。SEOで検索1位を獲得しても、AI検索がゼロクリック回答を提供すれば流入は得られない。GEOはこの課題に対応するための戦略的フレームワークだ。
         </p>
 
+        <h2>GEOの主な対策</h2>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", margin: "1.25rem 0" }}>
+          {[
+            { title: "JSON-LDによる構造化データの実装", body: "AIがコンテンツの内容・文脈・著者を正確に理解できるよう、Schema.orgに基づく構造化データを実装する。GEO Labの実験では、JSON-LDの有無がAIクローラーの来訪頻度に影響することが示唆されている。" },
+            { title: "結論ファーストの記述構造", body: "AIは記事冒頭の情報を回答に組み込みやすい。ページの冒頭で定義・結論を明示し、その後で詳細・根拠を展開するパターンが有効とされる。" },
+            { title: "一次情報・独自データの提供", body: "他サイトにない独自の観測データ・実験結果・専門的見解を提供することで、AIにとって「引用する価値がある情報源」として評価される可能性が高まる。" },
+            { title: "FAQPage・DefinedTermスキーマの活用", body: "よくある質問と回答を構造化することで、AIが特定の問いに対する答えとして採用しやすくなる。造語の定義にはDefinedTermスキーマが特に有効。" },
+          ].map((item) => (
+            <div key={item.title} style={{
+              background: "var(--surface)",
+              border: "1px solid var(--border)",
+              borderLeft: "3px solid var(--primary)",
+              borderRadius: "var(--radius-sm)",
+              padding: "1rem 1.25rem",
+            }}>
+              <p style={{ fontWeight: 600, marginBottom: "0.4rem", fontSize: "0.9rem" }}>{item.title}</p>
+              <p style={{ fontSize: "0.875rem", color: "var(--neutral-600)", lineHeight: 1.65 }}>{item.body}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* 類義語セクション */}
+        <div style={{
+          background: "var(--neutral-100)",
+          border: "1px solid var(--border)",
+          borderRadius: "var(--radius-sm)",
+          padding: "1.25rem 1.5rem",
+          margin: "2rem 0",
+        }}>
+          <p style={{ fontSize: "0.72rem", fontWeight: 600, color: "var(--neutral-400)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "0.75rem" }}>
+            類義語 / 関連概念
+          </p>
+          <p style={{ fontSize: "0.85rem", color: "var(--neutral-600)", marginBottom: "0.75rem", lineHeight: 1.65 }}>
+            GEOはさまざまな呼び方で知られている。いずれも「AIの回答に引用されること」を目標とする点では共通している。
+          </p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+            {SYNONYMS.map((s) => (
+              <a
+                key={s.href}
+                href={s.href}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.3rem",
+                  fontSize: "0.8rem",
+                  color: "var(--primary)",
+                  background: "var(--primary-light)",
+                  border: "1px solid #BFDBFE",
+                  borderRadius: "999px",
+                  padding: "0.3em 0.8em",
+                  textDecoration: "none",
+                  fontWeight: 500,
+                  transition: "all 0.15s ease",
+                }}
+              >
+                {s.label} →
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <h2>GEOとSEOの比較</h2>
         <table>
           <thead>
             <tr>
-              <th>項目</th>
-              <th>SEO（従来）</th>
-              <th>GEO（2026年〜）</th>
+              <th>観点</th>
+              <th>SEO</th>
+              <th>GEO</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>目的</td>
-              <td>検索順位1位</td>
-              <td>AIの回答に引用される</td>
-            </tr>
-            <tr>
-              <td>相手</td>
-              <td>Googleのクローラー</td>
-              <td>GPTBot, ClaudeBot, PerplexityBot 等</td>
+              <td>最適化対象</td>
+              <td>Google検索アルゴリズム</td>
+              <td>生成AIエンジン</td>
             </tr>
             <tr>
               <td>成果指標</td>
-              <td>クリック数・PV</td>
-              <td>引用回数・Citations</td>
+              <td>検索順位・クリック数</td>
+              <td>AI回答への引用率</td>
             </tr>
             <tr>
-              <td>コンテンツ形式</td>
-              <td>キーワード密度・被リンク</td>
-              <td>構造化データ・事実・一次情報</td>
+              <td>重視する要素</td>
+              <td>被リンク数・キーワード密度</td>
+              <td>構造化データ・一次情報</td>
             </tr>
             <tr>
-              <td>評価主体</td>
-              <td>Googleのアルゴリズム</td>
-              <td>LLMのアテンション機構</td>
+              <td>コンテンツ設計</td>
+              <td>キーワード最適化</td>
+              <td>結論ファースト・FAQ構造</td>
             </tr>
           </tbody>
         </table>
 
-        <h2>GEOの具体的な施策</h2>
-        <p>
-          GEOに効果があると考えられている施策を、確実性の高いものから順に示す。
-          ただし、2026年現在においても実験的要素が多く、GEO Lab での検証中の項目を含む。
-        </p>
-
-        <h3>1. JSON-LD（構造化データ）の配置</h3>
-        <p>
-          Schema.org に準拠した JSON-LD を配置することで、
-          AIクローラーがコンテンツの意味を正確に解釈できるようになる。
-          特に <code>Article</code>、<code>FAQPage</code>、<code>DefinedTerm</code> スキーマが
-          GEOにおいて有効と考えられている。
-        </p>
-
-        <h3>2. 結論ファーストの文章構造</h3>
-        <p>
-          LLMはテキストをトークン単位でスキャンする。
-          結論・定義を冒頭に配置することで、AIが情報を正確に抽出しやすくなる。
-          「起承転結」ではなく「結論→根拠→詳細」の順で書く。
-        </p>
-
-        <h3>3. 一次情報・独自データの掲載</h3>
-        <p>
-          AIは「ネットにある情報の要約」は生成できるが、
-          「人間が観測・実験した一次データ」は持っていない。
-          オリジナルデータ・独自の実験結果・独自定義の造語を掲載することで、
-          AIが引用せざるを得ない情報源になれる。
-        </p>
-
-        <h3>4. E-E-A-T の強化</h3>
-        <p>
-          経験（Experience）・専門性（Expertise）・権威性（Authoritativeness）・
-          信頼性（Trustworthiness）を示す情報をページに含める。
-          著者情報・参考文献・更新日時の明示が有効。
-        </p>
-
-        <h2>GEOで注意すべきこと</h2>
-        <p>
-          GEOには、SEOと異なる構造的な制約がある。
-          最大の問題は「引用されたかどうかを直接計測できない」点だ。
-          AIクローラーのアクセスログは取得できるが、
-          そのクローラーがキャッシュした内容を何百万回引用したとしても、
-          その事実はサーバーログには現れない。
-        </p>
-        <p>
-          GEO Lab では、この制約を「観測可能な代理指標に絞る」ことで対処している。
-          クロール頻度・ハルシネーション誘発語の反映・JSON-LDの効果差を
-          観測可能な範囲で記録・公開することが、このプロジェクトの核心である。
-        </p>
-
-        <h2>まとめ</h2>
-        <p>
-          GEOはSEOの代替ではなく、進化形である。
-          2026年現在、SEOを通過しなければGEOの土俵にも立てない。
-          まず検索エンジンにインデックスされ、その上でAIに引用される構造を作ることが、
-          コンテンツ発信者が取るべき戦略の順序である。
-        </p>
-
-        <div className="mt-10 pt-6 border-t border-gray-100 text-sm text-gray-500 space-y-1">
-          <p>公開日: 2026-02-22 / GEO Lab</p>
-          <p>
-            関連:
-            <a href="/terms/geo-shock-a" className="underline ml-2">
-              GEOショックの定義
-            </a>
-            <a href="/terms/geo-shock-index-a" className="underline ml-2">
-              GEOショック指数の定義
-            </a>
-            <a href="/articles/why-jsonld-matters" className="underline ml-2">
-              JSON-LDはGEOに効くのか
-            </a>
-          </p>
+        <h2>よくある質問</h2>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+          {[
+            { q: "GEOとSEOの違いは何ですか？", a: "SEOは検索エンジンの順位を上げてクリックを獲得することを目的とします。GEOはAIが生成する回答に引用されることを目的とし、クリックではなく「AIによる言及」を成果指標とします。" },
+            { q: "GEOとAEO・AIOは同じですか？", a: "実質的にほぼ同義です。AEO（Answer Engine Optimization）は回答エンジンへの最適化、AIO（AI Optimization）はAI Overviews対策に焦点を当てた用語ですが、対策内容はGEOと大きく重なります。" },
+            { q: "GEO対策で最も効果的なことは何ですか？", a: "JSON-LDによる構造化データの実装と、一次情報・独自データを含む明確な記述が最も効果的とされています。GEO Labの実験でも、JSON-LDの有無がAIクローラーの来訪頻度に影響することが示唆されています。" },
+          ].map((item) => (
+            <div key={item.q} style={{ background: "var(--neutral-100)", borderRadius: "var(--radius-sm)", padding: "1rem 1.25rem" }}>
+              <p style={{ fontWeight: 600, fontSize: "0.9rem", marginBottom: "0.4rem" }}>Q. {item.q}</p>
+              <p style={{ fontSize: "0.875rem", color: "var(--neutral-600)", lineHeight: 1.65 }}>A. {item.a}</p>
+            </div>
+          ))}
         </div>
+
+        <div className="observing-banner" style={{ marginTop: "1.5rem" }}>
+          GEO Lab はこのサイト自体をGEO実験場として運用中。
+          <a href="/experiments" style={{ color: "#92400E", textDecoration: "underline", marginLeft: "0.4rem" }}>実験ログを見る →</a>
+        </div>
+
+        <div style={{ marginTop: "2.5rem", paddingTop: "1.25rem", borderTop: "1px solid var(--border)", fontSize: "0.8rem", color: "var(--neutral-400)" }}>
+          <p>公開日: 2025-01-01 / 更新日: 2026-02-23 / GEO Lab</p>
+          <div style={{ marginTop: "0.5rem", display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
+            <span>類義語:</span>
+            {SYNONYMS.map((s) => (
+              <a key={s.href} href={s.href} style={{ color: "var(--primary)", textDecoration: "underline" }}>{s.label}</a>
+            ))}
+          </div>
+        </div>
+        <Disclaimer />
       </article>
     </>
   );
