@@ -16,7 +16,7 @@ const SKIP_PREFIXES = [
 // UAベースのボット判定
 // ========================================
 function detectBotByUA(ua: string): string | null {
-  if (!ua) return null;
+  if (!ua) return "unknown";
   if (/GPTBot/i.test(ua)) return "GPTBot";
   if (/ChatGPT-User/i.test(ua)) return "ChatGPT-User";
   if (/OAI-SearchBot/i.test(ua)) return "OAI-SearchBot";
@@ -61,7 +61,7 @@ const ASN_MAP: Record<string, string> = {
   // Hetzner
   "24940": "Hetzner",
   // M247（スクレイパー温床）
-  "9009":  "M247-Scraper",
+  "9009": "M247-Scraper",
   // OVH
   "16276": "OVH",
   // Linode
@@ -103,11 +103,12 @@ export async function middleware(request: NextRequest) {
   try {
     const supabase = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     );
 
     const ip =
-      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      "unknown";
     const ua = request.headers.get("user-agent") || "";
     const path = pathname + (request.nextUrl.search || "");
     const isHoneypot =
@@ -115,9 +116,9 @@ export async function middleware(request: NextRequest) {
     const asn = request.headers.get("x-vercel-ip-as-number") || null;
 
     // UAで判定 → ダメならASNで補完
-    const botByUA  = detectBotByUA(ua);
+    const botByUA = detectBotByUA(ua);
     const botByASN = detectBotByASN(asn);
-    const botType  = botByUA || botByASN || null;
+    const botType = botByUA || botByASN || null;
 
     // 検証レベル
     // L1: UAで判定できた
