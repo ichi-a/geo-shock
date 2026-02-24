@@ -236,7 +236,7 @@ export default async function CrawlersPage() {
       "created_at, ip_hash, path, bot_type, asn, is_honeypot, is_malicious, ua",
     )
     .gte("created_at", since)
-    .order("created_at", { ascending: true });
+    .order("created_at", { ascending: false });
 
   if (error) {
     return (
@@ -456,17 +456,18 @@ export default async function CrawlersPage() {
               marginBottom: "1rem",
             }}
           >
-            セッション一覧（最新50件）
+            セッション一覧（最新200件）
           </p>
           <div
             style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}
           >
-            {sessions.slice(0, 50).map((session, i) => {
+            {sessions.slice(0, 200).map((session, i) => {
               const meta = PATTERN_META[session.pattern];
               const lastAccess = new Date(
                 session.timestamps[session.timestamps.length - 1],
               ).toLocaleString("ja-JP", {
                 timeZone: "Asia/Tokyo",
+                year: "numeric",
                 month: "2-digit",
                 day: "2-digit",
                 hour: "2-digit",
@@ -612,6 +613,17 @@ export default async function CrawlersPage() {
                           ASN{session.asn}
                         </p>
                       )}
+                      <p
+                        style={{
+                          fontSize: "0.63rem",
+                          color: "#1E293B",
+                          fontFamily: "'DM Mono', monospace",
+                          marginTop: "0.2rem",
+                          letterSpacing: "0.03em",
+                        }}
+                      >
+                        {session.ip_hash.slice(0, 8)}…
+                      </p>
                     </div>
                   </div>
                 </div>
