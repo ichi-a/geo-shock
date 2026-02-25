@@ -1,7 +1,8 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.geo-shock.com";
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.geo-shock.com";
   const now = new Date();
 
   return [
@@ -71,10 +72,47 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
-    { url: `${siteUrl}/articles/what-is-aio`, lastModified: new Date("2026-02-23"), changeFrequency: "monthly", priority: 0.85 },
-    { url: `${siteUrl}/articles/what-is-aeo`, lastModified: new Date("2026-02-23"), changeFrequency: "monthly", priority: 0.85 },
-    { url: `${siteUrl}/articles/what-is-ai-seo`, lastModified: new Date("2026-02-23"), changeFrequency: "monthly", priority: 0.85 },
-    { url: `${siteUrl}/articles/what-is-ai-search`, lastModified: new Date("2026-02-23"), changeFrequency: "monthly", priority: 0.85 },
-
+    {
+      url: `${siteUrl}/articles/what-is-aio`,
+      lastModified: new Date("2026-02-23"),
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${siteUrl}/articles/what-is-aeo`,
+      lastModified: new Date("2026-02-23"),
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${siteUrl}/articles/what-is-ai-seo`,
+      lastModified: new Date("2026-02-23"),
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${siteUrl}/articles/what-is-ai-search`,
+      lastModified: new Date("2026-02-23"),
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${siteUrl}/articles/ldo`,
+      lastModified: new Date("2026-02-25"),
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${siteUrl}/terms/ldo`,
+      lastModified: new Date("2026-02-25"),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${siteUrl}/experiments/ldo`,
+      lastModified: new Date("2026-02-25"),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
   ];
 }
