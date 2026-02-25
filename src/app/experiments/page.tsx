@@ -48,10 +48,7 @@ const experiments = [
     startDate: "2026-02-22",
     hypothesis:
       "正規のAIクローラーはhidden-trapへアクセスしないが、スクレイパーは踏む",
-    pages: [
-      { label: "/hidden-trap/a1", href: "/hidden-trap/a1" },
-      { label: "/hidden-trap/b2", href: "/hidden-trap/b2" },
-    ],
+    pages: [{ label: "観測レポート", href: "/stats" }],
     metric: "ハニーポット踏破率とUA別分布",
     result: "観測中",
   },
@@ -95,7 +92,6 @@ const experiments = [
       "AI向けに明確に構造化された新概念（LDO）をllms.txtとJSON-LDで定義した場合、AIクローラーのアクセス頻度・新規ボット出現・造語反映速度に変化が生じる",
     pages: [
       { label: "LDO概念ページ（DefinedTerm JSON-LDあり）", href: "/terms/ldo" },
-      { label: "EXP-006 実験ログ", href: "/experiments/ldo" },
       { label: "llms.txt（限定版）", href: "/llms.txt" },
     ],
     metric:

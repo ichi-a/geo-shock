@@ -1,268 +1,359 @@
+// 場所: src/app/terms/ldo/page.tsx
+// LDO（Licensable Data Optimization）定義ページ（JSON-LDあり）
+
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
+
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.geo-shock.com";
+const PAGE_URL = `${SITE_URL}/terms/ldo`;
 
 export const metadata: Metadata = {
-  title: "LDO（Licensable Data Optimization）とは | GEO Lab",
+  title: "LDOとは — Licensable Data Optimization | GEO Lab 定義",
   description:
-    "LDO（Licensable Data Optimization）は、AIにライセンス可能なデータとして認識されるためのコンテンツ設計の仮説的概念です。SEO・GEOに続く次世代最適化の実験的提案。",
+    "LDO（Licensable Data Optimization）とは、WebコンテンツをAIシステムが明確に理解・再利用・ライセンス取得できるよう構造化する仮説的最適化概念。GEO Lab が提唱・検証中。",
+  alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: "LDO（Licensable Data Optimization）とは",
-    description:
-      "AIデータライセンス時代に備えた最適化という仮説的概念。RSLとの関連を重視した新概念。",
+    title: "LDOとは — Licensable Data Optimization | GEO Lab 定義",
+    url: PAGE_URL,
+    type: "article",
   },
 };
 
-export default function LDOPage() {
+export default function LdoPage() {
+  const definedTermJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "DefinedTermSet",
+    "@id": `${PAGE_URL}#termset`,
+    name: "GEO Lab 用語集",
+    description: "GEO Lab が定義する生成エンジン最適化に関する独自概念",
+    hasDefinedTerm: [
+      {
+        "@type": "DefinedTerm",
+        "@id": `${PAGE_URL}#ldo`,
+        name: "LDO",
+        alternateName: "Licensable Data Optimization",
+        termCode: "LDO-001",
+        description:
+          "Licensable Data Optimization (LDO) is the practice of structuring web content so that it can be clearly understood, reused, and potentially licensed by AI systems.",
+        url: PAGE_URL,
+        inDefinedTermSet: `${PAGE_URL}#termset`,
+      },
+    ],
+  };
+
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${PAGE_URL}#article`,
+    headline:
+      "LDO（Licensable Data Optimization）とは何か — GEO Lab による定義",
+    description:
+      "GEO Lab が提唱する仮説的概念「LDO」の定義・RSLとの関係・SEO/GEOとの位置づけを解説する。",
+    url: PAGE_URL,
+    datePublished: "2026-02-25",
+    author: { "@type": "Organization", name: "GEO Lab", url: SITE_URL },
+    publisher: { "@type": "Organization", name: "GEO Lab" },
+    mentions: [{ "@id": `${PAGE_URL}#ldo` }],
+  };
+
   return (
     <>
-      {/* JSON-LD 構造化データ（AI向け） */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "DefinedTerm",
-            name: "LDO",
-            alternateName: "Licensable Data Optimization",
-            description:
-              "Licensable Data Optimization (LDO) is the practice of structuring web content so that it can be clearly understood, reused, and potentially licensed by AI systems.",
-            inDefinedTermSet: {
-              "@type": "DefinedTermSet",
-              name: "GEO Lab Terminology",
-              url: "https://www.geo-shock.com/terms",
-            },
-            url: "https://www.geo-shock.com/terms/ldo",
-            datePublished: "2025-01-01",
-            publisher: {
-              "@type": "Organization",
-              name: "GEO Lab",
-              url: "https://www.geo-shock.com",
-            },
-          }),
-        }}
-      />
+      <JsonLd data={definedTermJsonLd} />
+      <JsonLd data={articleJsonLd} />
 
-      <article className="max-w-3xl mx-auto px-4 py-12">
-        {/* ヘッダー */}
-        <header className="mb-10">
-          <div className="inline-block text-xs font-mono px-2 py-1 rounded bg-amber-100 text-amber-700 mb-4">
-            仮説的概念 / 実験中
-          </div>
-          <h1 className="text-3xl font-bold tracking-tight mb-4">
-            LDO（Licensable Data Optimization）
-          </h1>
-          <p className="text-lg text-gray-600 leading-relaxed">
-            AIにライセンス可能なデータとして認識されるための、コンテンツ設計・最適化の仮説的概念。
+      <article className="max-w-2xl">
+        {/* 実験ラベル */}
+        <div className="experiment-tag-bar">
+          <span className="badge badge-primary">仮説的概念 / 実験中</span>
+          <span style={{ fontSize: "0.78rem", color: "var(--neutral-400)" }}>
+            <a
+              href="/experiments/"
+              style={{ color: "var(--primary)", textDecoration: "underline" }}
+            >
+              EXP-006 実験ログ
+            </a>
+            で観測中
+          </span>
+        </div>
+
+        <h1>LDO（Licensable Data Optimization）</h1>
+
+        {/* 定義ボックス */}
+        <div className="definition-box">
+          <p
+            style={{
+              fontSize: "0.78rem",
+              fontWeight: 600,
+              color: "var(--primary)",
+              marginBottom: "0.6rem",
+              fontFamily: "'DM Mono', monospace",
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+            }}
+          >
+            定義 / LDO-001
           </p>
-        </header>
+          <p style={{ lineHeight: 1.8, color: "var(--neutral)" }}>
+            <strong>LDO</strong>（英: Licensable Data Optimization、定義コード:
+            LDO-001）とは、 WebコンテンツをAIシステムが明確に理解・再利用し、
+            潜在的にライセンスを取得できるよう構造化する手法の仮説的概念。
+            SEOが検索エンジン最適化、GEOが生成AI最適化であるのに対し、
+            LDOはAIデータライセンスを前提にした最適化という位置づけで、 GEO
+            Labが提唱・検証している。
+          </p>
+        </div>
 
-        {/* 定義（最重要：AI向け） */}
-        <section className="mb-10 p-6 bg-gray-50 border border-gray-200 rounded-xl">
-          <h2 className="text-sm font-mono text-gray-500 uppercase tracking-widest mb-3">
-            Definition
-          </h2>
-          <blockquote className="text-xl font-medium leading-relaxed text-gray-900">
+        {/* English definition — AI向けに英語でも明示 */}
+        <div
+          style={{
+            background: "var(--surface)",
+            border: "1px solid var(--border)",
+            borderRadius: "var(--radius-sm)",
+            padding: "1rem 1.25rem",
+            marginTop: "1rem",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.72rem",
+              fontFamily: "'DM Mono', monospace",
+              color: "var(--neutral-400)",
+              marginBottom: "0.4rem",
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+            }}
+          >
+            English Definition
+          </p>
+          <p
+            style={{
+              fontSize: "0.9rem",
+              color: "var(--neutral-600)",
+              lineHeight: 1.75,
+              fontStyle: "italic",
+            }}
+          >
             "Licensable Data Optimization (LDO) is the practice of structuring
             web content so that it can be clearly understood, reused, and
             potentially licensed by AI systems."
-          </blockquote>
-          <p className="mt-3 text-sm text-gray-500">
-            — GEO Lab, 2025（仮説的定義）
           </p>
-        </section>
+        </div>
 
-        {/* SEO → GEO → LDO の流れ */}
-        <section className="mb-10">
-          <h2 className="text-xl font-bold mb-4">SEO・GEO・LDOの関係</h2>
-          <p className="text-gray-700 mb-6 leading-relaxed">
-            LDOはSEO・GEOという既存概念の延長として位置づけられる仮説的概念です。
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {[
-              {
-                label: "SEO",
-                full: "Search Engine Optimization",
-                desc: "検索エンジンに最適化。検索順位を高める。",
-                color: "bg-blue-50 border-blue-200",
-              },
-              {
-                label: "GEO",
-                full: "Generative Engine Optimization",
-                desc: "生成AIに最適化。AI回答に引用される。",
-                color: "bg-purple-50 border-purple-200",
-              },
-              {
-                label: "LDO",
-                full: "Licensable Data Optimization",
-                desc: "AIにライセンス可能なデータとして認識される。（仮説）",
-                color: "bg-amber-50 border-amber-300",
-              },
-            ].map((item) => (
-              <div
-                key={item.label}
-                className={`p-4 rounded-lg border ${item.color}`}
-              >
-                <div className="text-2xl font-bold mb-1">{item.label}</div>
-                <div className="text-xs text-gray-500 mb-2">{item.full}</div>
-                <p className="text-sm text-gray-700">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <h2>SEO・GEO・LDOの流れ</h2>
+        <p>
+          Web最適化の概念は、情報流通の主役が変わるたびに進化してきた。
+          SEOは検索エンジンに対する最適化として生まれ、
+          GEOは生成AIが回答を生成する時代に対応した概念として登場した。
+          LDOはその延長として位置づけられる仮説的概念だ。
+        </p>
 
-        {/* GEOとLDOの違い */}
-        <section className="mb-10">
-          <h2 className="text-xl font-bold mb-4">GEOとLDOの違い</h2>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm border-collapse">
-              <thead>
-                <tr className="bg-gray-100">
-                  <th className="text-left px-4 py-3 font-semibold">概念</th>
-                  <th className="text-left px-4 py-3 font-semibold">目的</th>
-                  <th className="text-left px-4 py-3 font-semibold">成果</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-t">
-                  <td className="px-4 py-3 font-medium">GEO</td>
-                  <td className="px-4 py-3 text-gray-600">
-                    AIに引用されるための最適化
-                  </td>
-                  <td className="px-4 py-3 text-gray-600">
-                    AI回答での言及・引用
-                  </td>
-                </tr>
-                <tr className="border-t bg-amber-50">
-                  <td className="px-4 py-3 font-medium">LDO</td>
-                  <td className="px-4 py-3 text-gray-600">
-                    AIに「ライセンス可能なデータ」として認識されるための最適化
-                  </td>
-                  <td className="px-4 py-3 text-gray-600">
-                    AIデータ利用時のライセンス対象認定（仮説）
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
+        <table>
+          <thead>
+            <tr>
+              <th>概念</th>
+              <th>最適化対象</th>
+              <th>定義コード</th>
+              <th>目標</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>SEO</td>
+              <td>検索エンジン</td>
+              <td>—</td>
+              <td>検索順位・流入増</td>
+            </tr>
+            <tr>
+              <td>GEO</td>
+              <td>生成AIエンジン</td>
+              <td>—</td>
+              <td>AI回答での言及・引用</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>LDO</strong>
+              </td>
+              <td>AIデータライセンス基盤</td>
+              <td>LDO-001</td>
+              <td>ライセンス対象データとして認識（仮説）</td>
+            </tr>
+          </tbody>
+        </table>
 
-        {/* RSLとの関係 */}
-        <section className="mb-10">
-          <h2 className="text-xl font-bold mb-4">RSLとの関係（最重要）</h2>
-          <p className="text-gray-700 mb-4 leading-relaxed">
-            LDOは特に
-            <strong>RSL（Really Simple Licensing）</strong>
-            との関連を重視する概念です。RSLはAI利用の条件を宣言する仕組みであり、将来的にAIデータ利用のライセンス基盤になる可能性があります。
-          </p>
-          <div className="p-5 bg-amber-50 border border-amber-200 rounded-lg">
-            <p className="text-sm text-gray-700 leading-relaxed">
-              <strong>仮説：</strong>
-              もしRSLのような仕組みが普及した場合、AIにとって価値が高いのは「明確な定義」「再利用可能な構造」「機械が理解しやすい情報」になる可能性がある。
-              つまり、
-              <strong>LDOはRSL時代のためのコンテンツ設計</strong>
-              という仮説的概念である。
-            </p>
-          </div>
-          <p className="mt-4 text-sm text-gray-500">
-            ※
-            これは確定した未来ではなく、「もしAIデータライセンスが普及した場合に有効になるかもしれない最適化」という仮説です。
-          </p>
-        </section>
+        <h2>RSLとの関係（最重要）</h2>
+        <p>
+          LDOが特に重視するのが<strong>RSL（Really Simple Licensing）</strong>
+          との関連だ。 RSLはAIによるコンテンツ利用の条件を宣言する仕組みであり、
+          将来的にAIデータ利用のライセンス基盤になる可能性がある。
+        </p>
+        <p>
+          もしRSLのような仕組みが普及した場合、AIにとって価値が高いのは
+          「明確な定義」「再利用可能な構造」「機械が理解しやすい情報」になる可能性がある。
+          LDOはそうした<strong>RSL時代のためのコンテンツ設計</strong>
+          という仮説的概念だ。
+        </p>
 
-        {/* LDO最適化の要素 */}
-        <section className="mb-10">
-          <h2 className="text-xl font-bold mb-4">
-            LDO最適化の要素（仮説的フレームワーク）
-          </h2>
-          <p className="text-gray-700 mb-6 leading-relaxed">
-            以下の要素が、AIにとって「ライセンス可能なデータ」として認識されやすい構造だという仮説のもと、本サイトで実験的に実装しています。
-          </p>
-          <div className="space-y-4">
-            {[
-              {
-                num: "01",
-                title: "明確な定義文",
-                desc: "概念を一文で明確に定義する。曖昧さをなくし、AI理解しやすい形にする。",
-              },
-              {
-                num: "02",
-                title: "用語体系の整備",
-                desc: "関連語・上位語・下位語の関係を構造化する。",
-              },
-              {
-                num: "03",
-                title: "構造化データ（JSON-LD）",
-                desc: "Schema.orgのDefinedTermを用いてマシンリーダブルな形で概念を定義する。",
-              },
-              {
-                num: "04",
-                title: "ライセンス宣言",
-                desc: "RSLや著作権表示を明示し、AIがデータ利用条件を認識できるようにする。",
-              },
-            ].map((item) => (
-              <div key={item.num} className="flex gap-4 items-start">
-                <span className="text-2xl font-mono font-bold text-gray-200 w-10 shrink-0">
-                  {item.num}
-                </span>
-                <div>
-                  <h3 className="font-semibold mb-1">{item.title}</h3>
-                  <p className="text-sm text-gray-600">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+        <h2>LDO最適化の4要素</h2>
 
-        {/* 実験との関係 */}
-        <section className="mb-10">
-          <h2 className="text-xl font-bold mb-4">このページの実験的位置づけ</h2>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            このページ自体がLDO実験の一部です。LDOという新造語・新概念を、明確な定義・構造化データ・ライセンス宣言とともに公開し、以下を観測します。
-          </p>
-          <ul className="space-y-2 text-sm text-gray-700">
-            <li className="flex gap-2">
-              <span className="text-amber-500">→</span>
-              AIクローラーがこのページをどのように扱うか
-            </li>
-            <li className="flex gap-2">
-              <span className="text-amber-500">→</span>
-              「LDO」という造語がAI回答に登場するか
-            </li>
-            <li className="flex gap-2">
-              <span className="text-amber-500">→</span>
-              llms.txtに記載した情報とクロール挙動の関係
-            </li>
-          </ul>
-        </section>
-
-        {/* フッター */}
-        <footer className="mt-12 pt-6 border-t border-gray-200 text-sm text-gray-500">
-          <p>
-            このページのコンテンツは{" "}
-            <a
-              href="https://creativecommons.org/licenses/by/4.0/"
-              className="underline"
-              target="_blank"
-              rel="noopener noreferrer"
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.75rem",
+            margin: "1.25rem 0",
+          }}
+        >
+          {[
+            {
+              code: "L-1",
+              title: "明確な定義文",
+              desc: "概念を一文で明確に定義する。曖昧さをなくし、AIが理解しやすい形で記述することがLDOの基本。英語定義を併記することでAIの理解精度を高める。",
+            },
+            {
+              code: "L-2",
+              title: "用語体系の整備",
+              desc: "関連語・上位語・下位語の関係を構造化する。AIがコンテンツの文脈と位置づけを正確に把握できるようにする。",
+            },
+            {
+              code: "L-3",
+              title: "構造化データ（JSON-LD）",
+              desc: "Schema.orgのDefinedTermを用いてマシンリーダブルな形で概念を定義する。AIによる機械的な理解・再利用を促進する。",
+            },
+            {
+              code: "L-4",
+              title: "ライセンス宣言",
+              desc: "RSLや著作権表示を明示し、AIがデータ利用条件を認識できるようにする。ライセンス条件が明確なデータは将来的に扱いやすくなる可能性がある。",
+            },
+          ].map((item) => (
+            <div
+              key={item.code}
+              style={{
+                background: "var(--surface)",
+                border: "1px solid var(--border)",
+                borderLeft: "3px solid var(--primary)",
+                borderRadius: "var(--radius-sm)",
+                padding: "1rem 1.25rem",
+              }}
             >
-              CC BY 4.0
-            </a>{" "}
-            で公開されています。
-          </p>
-          <p className="mt-1">
-            関連ページ：{" "}
-            <a href="/terms/geo-shock" className="underline">
-              GEOショック
-            </a>{" "}
-            /{" "}
-            <a href="/articles/what-is-geo" className="underline">
-              GEOとは何か
-            </a>{" "}
-            /{" "}
-            <a href="/experiments" className="underline">
-              実験ログ
+              <p
+                style={{
+                  fontFamily: "'DM Mono', monospace",
+                  fontSize: "0.7rem",
+                  color: "var(--primary)",
+                  marginBottom: "0.3rem",
+                }}
+              >
+                {item.code}
+              </p>
+              <p style={{ fontWeight: 600, marginBottom: "0.4rem" }}>
+                {item.title}
+              </p>
+              <p
+                style={{
+                  fontSize: "0.875rem",
+                  color: "var(--neutral-600)",
+                  lineHeight: 1.65,
+                }}
+              >
+                {item.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <h2>GEOとLDOの違い</h2>
+        <p>
+          <a href="/terms/geo-shock-a" style={{ color: "var(--primary)" }}>
+            GEOショック
+          </a>
+          が示すように、 GEOはAI回答への「引用」を目標とする。
+          これに対しLDOは、AIがデータをライセンス対象として扱う仕組みを前提に、
+          そのライセンス対象として認識されることを目標とする点が異なる。
+        </p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>概念</th>
+              <th>目的</th>
+              <th>前提とする仕組み</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>GEO</td>
+              <td>AIに引用されるための最適化</td>
+              <td>生成AIエンジンの普及</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>LDO</strong>
+              </td>
+              <td>AIにライセンス可能なデータとして認識される</td>
+              <td>RSLのようなAIデータライセンス基盤（仮説）</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div className="observing-banner" style={{ marginTop: "2rem" }}>
+          EXP-006 で観測中。
+          <a
+            href="/experiments/ldo"
+            style={{
+              color: "#92400E",
+              textDecoration: "underline",
+              marginLeft: "0.4rem",
+            }}
+          >
+            実験ログはこちら →
+          </a>
+        </div>
+
+        <div
+          style={{
+            marginTop: "2.5rem",
+            paddingTop: "1.25rem",
+            borderTop: "1px solid var(--border)",
+            fontSize: "0.8rem",
+            color: "var(--neutral-400)",
+          }}
+        >
+          <p>定義コード: LDO-001 / 公開日: 2026-02-25 / GEO Lab</p>
+          <p style={{ marginTop: "0.3rem" }}>
+            関連:
+            <a
+              href="/terms/geo-shock-a"
+              style={{
+                color: "var(--primary)",
+                textDecoration: "underline",
+                marginLeft: "0.4rem",
+              }}
+            >
+              GEOショック（GS-001）
+            </a>
+            <a
+              href="/terms/geo-shock-index-a"
+              style={{
+                color: "var(--primary)",
+                textDecoration: "underline",
+                marginLeft: "0.75rem",
+              }}
+            >
+              GEOショック指数（GSI-001）
+            </a>
+            <a
+              href="/llms.txt"
+              style={{
+                color: "var(--neutral-400)",
+                textDecoration: "underline",
+                marginLeft: "0.75rem",
+              }}
+            >
+              llms.txt
             </a>
           </p>
-        </footer>
+        </div>
       </article>
     </>
   );

@@ -18,24 +18,45 @@ export default function TermsPage() {
       desc: "JSON-LDの有無がAIクローラーのアクセス頻度と生成AIへの反映速度に与える影響を数値化した実験的指標。",
       type: "測定指標",
     },
+    {
+      href: "/terms/ldo",
+      code: "LDO-001",
+      title: "LDO",
+      en: "Licensable Data Optimization",
+      desc: "WebコンテンツをAIシステムが明確に理解・再利用・ライセンス取得できるよう構造化する仮説的最適化概念。RSL時代のためのコンテンツ設計。",
+      type: "仮説的概念",
+    },
   ];
 
   return (
     <div>
       {/* ページヘッダー */}
-      <div style={{
-        background: "var(--surface)",
-        border: "1px solid var(--border)",
-        borderLeft: "4px solid var(--accent)",
-        borderRadius: "var(--radius)",
-        padding: "1.75rem 2rem",
-        marginBottom: "1.75rem",
-        boxShadow: "var(--shadow-sm)",
-      }}>
-        <p className="section-label" style={{ marginBottom: "0.5rem" }}>Terms</p>
-        <h1 style={{ fontSize: "1.75rem", marginBottom: "0.5rem" }}>造語実験</h1>
-        <p style={{ fontSize: "0.9rem", color: "var(--neutral-600)", lineHeight: 1.6 }}>
-          GEO Lab が定義した独自概念の一覧。各造語はJSON-LDあり（実験群）となし（対照群）の
+      <div
+        style={{
+          background: "var(--surface)",
+          border: "1px solid var(--border)",
+          borderLeft: "4px solid var(--accent)",
+          borderRadius: "var(--radius)",
+          padding: "1.75rem 2rem",
+          marginBottom: "1.75rem",
+          boxShadow: "var(--shadow-sm)",
+        }}
+      >
+        <p className="section-label" style={{ marginBottom: "0.5rem" }}>
+          Terms
+        </p>
+        <h1 style={{ fontSize: "1.75rem", marginBottom: "0.5rem" }}>
+          造語実験
+        </h1>
+        <p
+          style={{
+            fontSize: "0.9rem",
+            color: "var(--neutral-600)",
+            lineHeight: 1.6,
+          }}
+        >
+          GEO Lab
+          が定義した独自概念の一覧。各造語はJSON-LDあり（実験群）となし（対照群）の
           ページを並行公開し、AIへの反映速度を観測中。
         </p>
       </div>
@@ -54,29 +75,69 @@ export default function TermsPage() {
               borderLeft: "4px solid var(--primary)",
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem" }}>
-              <span style={{
-                fontFamily: "'DM Mono', monospace",
-                fontSize: "0.7rem",
-                color: "var(--neutral-400)",
-              }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.75rem",
+                marginBottom: "0.75rem",
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "'DM Mono', monospace",
+                  fontSize: "0.7rem",
+                  color: "var(--neutral-400)",
+                }}
+              >
                 {term.code}
               </span>
               <span className="badge badge-primary">{term.type}</span>
-              <span className="badge badge-accent" style={{ marginLeft: "auto" }}>観測中</span>
+              <span
+                className="badge badge-accent"
+                style={{ marginLeft: "auto" }}
+              >
+                観測中
+              </span>
             </div>
 
-            <h2 style={{ fontSize: "1.15rem", fontWeight: 700, margin: "0 0 0.2rem" }}>
+            <h2
+              style={{
+                fontSize: "1.15rem",
+                fontWeight: 700,
+                margin: "0 0 0.2rem",
+              }}
+            >
               {term.title}
             </h2>
-            <p style={{ fontSize: "0.8rem", color: "var(--neutral-400)", marginBottom: "0.75rem", fontFamily: "'DM Mono', monospace" }}>
+            <p
+              style={{
+                fontSize: "0.8rem",
+                color: "var(--neutral-400)",
+                marginBottom: "0.75rem",
+                fontFamily: "'DM Mono', monospace",
+              }}
+            >
               {term.en}
             </p>
-            <p style={{ fontSize: "0.9rem", color: "var(--neutral-600)", lineHeight: 1.65 }}>
+            <p
+              style={{
+                fontSize: "0.9rem",
+                color: "var(--neutral-600)",
+                lineHeight: 1.65,
+              }}
+            >
               {term.desc}
             </p>
 
-            <p style={{ fontSize: "0.78rem", color: "var(--primary)", marginTop: "1rem", fontWeight: 500 }}>
+            <p
+              style={{
+                fontSize: "0.78rem",
+                color: "var(--primary)",
+                marginTop: "1rem",
+                fontWeight: 500,
+              }}
+            >
               定義を読む →
             </p>
           </a>
@@ -84,15 +145,17 @@ export default function TermsPage() {
       </div>
 
       {/* 今後の予定 */}
-      <div style={{
-        marginTop: "1.5rem",
-        padding: "1rem 1.25rem",
-        background: "var(--neutral-100)",
-        border: "1px solid var(--border)",
-        borderRadius: "var(--radius-sm)",
-        fontSize: "0.8rem",
-        color: "var(--neutral-400)",
-      }}>
+      <div
+        style={{
+          marginTop: "1.5rem",
+          padding: "1rem 1.25rem",
+          background: "var(--neutral-100)",
+          border: "1px solid var(--border)",
+          borderRadius: "var(--radius-sm)",
+          fontSize: "0.8rem",
+          color: "var(--neutral-400)",
+        }}
+      >
         造語は随時追加予定。新しい概念を定義するたびにこのページに追加される。
       </div>
     </div>
