@@ -4,6 +4,7 @@
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { supabaseAdmin } from "@/lib/supabase";
+import { isMaliciousPath } from "@/lib/malicious-patterns";
 
 export const dynamic = "force-dynamic";
 export const metadata = { robots: { index: false, follow: false } };
@@ -144,6 +145,7 @@ function classifyPattern(
   timestamps: string[],
   hasMalicious: boolean,
 ): CrawlPattern {
+  const actuallMlicious = hasMalicious || paths.some((p) => isMaliciousPath(p));
   if (hasMalicious) return "MALICIOUS";
   if (paths.length === 1) return "SINGLE";
 

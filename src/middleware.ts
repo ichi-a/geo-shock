@@ -181,7 +181,7 @@ export async function middleware(request: NextRequest) {
 
     const isHoneypot =
       pathname.includes("/hidden-trap/") || pathname.includes("/llm-internal/");
-    const isMalicious = isMaliciousPath(pathname);
+    const isMalicious = isMaliciousPath(pathname) || isMaliciousPath(path);
 
     const botByUA = detectBotByUA(ua);
     const botByASN = detectBotByASN(asn);
