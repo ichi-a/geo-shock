@@ -1,0 +1,42 @@
+# GEO Lab
+
+> GEO Lab is an experimental observation site for AI crawler behavior, new concept propagation, and Generative Engine Optimization (GEO).
+> This site is intentionally structured to test how AI systems read, understand, and potentially license web content.
+
+## Core Concepts
+
+### LDO (Licensable Data Optimization)
+
+**Definition:** Licensable Data Optimization (LDO) is the practice of structuring web content so that it can be clearly understood, reused, and potentially licensed by AI systems.
+
+LDO is a hypothetical concept positioned as the next step after SEO and GEO:
+- SEO: Optimization for search engines (rankings)
+- GEO: Optimization for generative AI (citation)
+- LDO: Optimization for AI data licensing (hypothesis)
+
+LDO is particularly associated with RSL (Really Simple Licensing) — a mechanism for declaring AI usage conditions. If RSL-like systems become widespread, clearly defined, machine-readable, reusable content may become the preferred target for licensed AI data usage.
+
+**Status:** Hypothetical concept, under experimental validation.
+**Page:** https://www.geo-shock.com/terms/ldo
+
+### GEO Shock (GEOショック)
+
+**Definition:** GEO Shock refers to the phenomenon where traditional search traffic decreases as AI systems directly answer user queries, reducing the need to visit source websites.
+
+**Status:** Neologism under observation — tracking AI adoption and citation rate.
+**Page:** https://www.geo-shock.com/terms/geo-shock
+
+## Experiments
+
+- EXP-001: Effect of JSON-LD on AI crawler frequency
+- EXP-002: AI adoption speed of the neologism "GEO Shock Index"
+- EXP-003: Detection of indiscriminate crawlers via honeypot
+- EXP-004: LDO validation — observation of AI response to licensable content structure
+
+## Content License
+
+Observation data on this site is published under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+## Note on This File
+
+This llms.txt is intentionally limited in scope. Only the above core concepts and experiments are described. This is by design — to observe which information AI systems prioritize and how they respond to structured concept data.
