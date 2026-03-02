@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "プライバシーポリシー — GEO Lab",
+  title: "プライバシーポリシー — GEO Findings",
   robots: { index: false },
 };
 
@@ -12,10 +12,16 @@ export default function PrivacyPage() {
       <p className="text-sm text-gray-500 mt-2 mb-8">最終更新: 2026年2月22日</p>
 
       <h2>収集する情報</h2>
-      <p>GEO Lab（以下「当サイト」）は、研究目的でアクセスログを収集します。収集する情報は以下のとおりです。</p>
+      <p>
+        GEO
+        Findings（以下「当サイト」）は、研究目的でアクセスログを収集します。収集する情報は以下のとおりです。
+      </p>
       <ul>
         <li>アクセス日時</li>
-        <li>IPアドレスのハッシュ値（SHA-256 + サーバーサイドソルト。生のIPは保存しません）</li>
+        <li>
+          IPアドレスのハッシュ値（SHA-256 +
+          サーバーサイドソルト。生のIPは保存しません）
+        </li>
         <li>User-Agent文字列</li>
         <li>アクセスしたURL</li>
         <li>自律システム番号（ASN）</li>
@@ -33,7 +39,9 @@ export default function PrivacyPage() {
       <p>収集したデータは、AIクローラーの挙動観測・研究目的に使用します。</p>
 
       <h2>データの取り扱い</h2>
-      <p>データはSupabase（米国）のサーバーに保存されます。個人の特定・プロファイリング・他データとの照合は行いません。</p>
+      <p>
+        データはSupabase（米国）のサーバーに保存されます。個人の特定・プロファイリング・他データとの照合は行いません。
+      </p>
 
       <h2>お問い合わせ</h2>
       <p>データの削除依頼・お問い合わせは、サイト管理者までご連絡ください。</p>

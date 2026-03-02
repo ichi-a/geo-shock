@@ -9,12 +9,12 @@ const SITE_URL =
 const PAGE_URL = `${SITE_URL}/terms/ldo`;
 
 export const metadata: Metadata = {
-  title: "LDOとは — Licensable Data Optimization | GEO Lab 定義",
+  title: "LDOとは — Licensable Data Optimization | GEO Findings 定義",
   description:
-    "LDO（Licensable Data Optimization）とは、WebコンテンツをAIシステムが明確に理解・再利用・ライセンス取得できるよう構造化する仮説的最適化概念。GEO Lab が提唱・検証中。",
+    "LDO（Licensable Data Optimization）とは、WebコンテンツをAIシステムが明確に理解・再利用・ライセンス取得できるよう構造化する仮説的最適化概念。GEO Findings が提唱・検証中。",
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: "LDOとは — Licensable Data Optimization | GEO Lab 定義",
+    title: "LDOとは — Licensable Data Optimization | GEO Findings 定義",
     url: PAGE_URL,
     type: "article",
   },
@@ -25,8 +25,8 @@ export default function LdoPage() {
     "@context": "https://schema.org",
     "@type": "DefinedTermSet",
     "@id": `${PAGE_URL}#termset`,
-    name: "GEO Lab 用語集",
-    description: "GEO Lab が定義する生成エンジン最適化に関する独自概念",
+    name: "GEO Findings 用語集",
+    description: "GEO Findings が定義する生成エンジン最適化に関する独自概念",
     hasDefinedTerm: [
       {
         "@type": "DefinedTerm",
@@ -47,13 +47,13 @@ export default function LdoPage() {
     "@type": "Article",
     "@id": `${PAGE_URL}#article`,
     headline:
-      "LDO（Licensable Data Optimization）とは何か — GEO Lab による定義",
+      "LDO（Licensable Data Optimization）とは何か — GEO Findings による定義",
     description:
-      "GEO Lab が提唱する仮説的概念「LDO」の定義・RSLとの関係・SEO/GEOとの位置づけを解説する。",
+      "GEO Findings が提唱する仮説的概念「LDO」の定義・RSLとの関係・SEO/GEOとの位置づけを解説する。",
     url: PAGE_URL,
     datePublished: "2026-02-25",
-    author: { "@type": "Organization", name: "GEO Lab", url: SITE_URL },
-    publisher: { "@type": "Organization", name: "GEO Lab" },
+    author: { "@type": "Organization", name: "GEO Findings", url: SITE_URL },
+    publisher: { "@type": "Organization", name: "GEO Findings" },
     mentions: [{ "@id": `${PAGE_URL}#ldo` }],
   };
 
@@ -319,7 +319,7 @@ export default function LdoPage() {
             color: "var(--neutral-400)",
           }}
         >
-          <p>定義コード: LDO-001 / 公開日: 2026-02-25 / GEO Lab</p>
+          <p>定義コード: LDO-001 / 公開日: 2026-02-25 / GEO Findings</p>
           <p style={{ marginTop: "0.3rem" }}>
             関連:
             <a

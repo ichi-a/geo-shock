@@ -7,7 +7,7 @@ export default function AdminLoginPage() {
     <div className="min-h-screen bg-gray-950 flex items-center justify-center">
       <div className="w-full max-w-sm">
         <h1 className="text-xl font-bold text-white font-mono mb-6 text-center">
-          GEO Lab / Admin
+          GEO Findings / Admin
         </h1>
         <form action="/api/admin/login" method="POST" className="space-y-4">
           <input

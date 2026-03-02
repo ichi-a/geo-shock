@@ -1,6 +1,6 @@
-# GEO Lab
+# GEO Findings
 
-> GEO Lab is an experimental observation site for AI crawler behavior, new concept propagation, and Generative Engine Optimization (GEO).
+> GEO Findings is an experimental observation site for AI crawler behavior, new concept propagation, and Generative Engine Optimization (GEO).
 > This site is intentionally structured to test how AI systems read, understand, and potentially license web content.
 
 ## Core Concepts

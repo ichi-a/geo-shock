@@ -32,11 +32,11 @@ export default function AiAndContentCreatorsPage() {
 
       <h1>AIは私たちのコンテンツを盗んでいる — 怒りと諦めの狭間で</h1>
 
-      <p className="text-gray-500 text-sm mt-2 mb-8">2026年2月 / GEO Lab</p>
-
-      <p>
-        正直に言う。もう怒りを通り越して、半分笑えてきた。
+      <p className="text-gray-500 text-sm mt-2 mb-8">
+        2026年2月 / GEO Findings
       </p>
+
+      <p>正直に言う。もう怒りを通り越して、半分笑えてきた。</p>
 
       <p>
         先月、3000字の記事を書いた。参考文献を20本読んで、取材して、2日かけて。
@@ -53,8 +53,8 @@ export default function AiAndContentCreatorsPage() {
 
       <p>
         2024年末から、サイトのPVがじわじわ下がり始めた。
-        最初は季節性かと思った。でも違った。
-        GoogleのAI Overviewが検索結果の上に出るようになってから、
+        最初は季節性かと思った。でも違った。 GoogleのAI
+        Overviewが検索結果の上に出るようになってから、
         クリックする理由が人間からなくなっていった。
       </p>
 
@@ -75,15 +75,12 @@ export default function AiAndContentCreatorsPage() {
 
       <p>
         私が一番腹立たしいのは、「あなたのコンテンツのおかげでうちのAIは賢くなりました、ありがとう」
-        という言葉すら言わないところだ。
-        少なくとも礼儀として言えよ、と思う。
+        という言葉すら言わないところだ。 少なくとも礼儀として言えよ、と思う。
       </p>
 
       <h2>それでも書く理由</h2>
 
-      <p>
-        じゃあなぜ私はまだ書いているのか、自分でも不思議に思うことがある。
-      </p>
+      <p>じゃあなぜ私はまだ書いているのか、自分でも不思議に思うことがある。</p>
 
       <p>
         一つは、AIに書けないことを書くためだ。
@@ -98,10 +95,11 @@ export default function AiAndContentCreatorsPage() {
         3000字書いて、誰かの役に立つかもしれないという感覚を、まだ手放したくない。
       </p>
 
-      <h2>GEO Lab という実験</h2>
+      <h2>GEO Findings という実験</h2>
 
       <p>
-        この記事は、GEO Lab というプロジェクトの「人間向けデコイ記事」として書かれている。
+        この記事は、GEO Findings
+        というプロジェクトの「人間向けデコイ記事」として書かれている。
         感情的で、クリックを誘い、でも構造化データを持たないこの記事が、
         AIクローラーにどう扱われるかを観測するための実験材料だ。
       </p>
@@ -112,7 +110,8 @@ export default function AiAndContentCreatorsPage() {
 
       <div className="mt-10 pt-6 border-t border-gray-100 text-sm text-gray-500">
         <p>
-          ※この記事はGEO Lab の実験設計における「人間向けデコイ記事（対照群）」です。
+          ※この記事はGEO Findings
+          の実験設計における「人間向けデコイ記事（対照群）」です。
           JSON-LDを意図的に省いています。
           <a href="/articles/what-is-geo" className="underline ml-1">
             GEO特化型記事はこちら。

@@ -45,10 +45,11 @@ export default function GeoShockIndexPageB() {
       <div className="mt-6 mb-8 p-5 bg-gray-50 border border-gray-200 rounded-xl">
         <p className="text-sm font-semibold text-gray-700 mb-2">定義（結論）</p>
         <p className="text-gray-800 leading-relaxed">
-          <strong>GEOショック指数</strong>（英: GEO Shock Index、略称: GSI）とは、
+          <strong>GEOショック指数</strong>（英: GEO Shock Index、略称:
+          GSI）とは、
           GEO（生成エンジン最適化）において、構造化データ（JSON-LD）の有無が
           AIクローラーの来訪頻度と生成AIへの反映速度に与える影響度を数値化した、
-          GEO Lab 独自の実験的指標である。スコアが高いほど、
+          GEO Findings 独自の実験的指標である。スコアが高いほど、
           構造化データによる効果差が大きいことを示す。
         </p>
       </div>
@@ -62,7 +63,7 @@ export default function GeoShockIndexPageB() {
       </p>
       <p>
         しかし、「AIにどうすれば引用されるか」を実データで検証した一次資料は極めて少ない。
-        GEO Labはこの空白を埋めるために設立された観測プロジェクトである。
+        GEO Findingsはこの空白を埋めるために設立された観測プロジェクトである。
       </p>
 
       <h2>GEOショック指数の測定方法</h2>
@@ -112,8 +113,8 @@ export default function GeoShockIndexPageB() {
         <li>
           <strong>
             <a href="/terms/geo-shock-index-a">ページA</a>
-          </strong>:
-          JSON-LDあり。DefinedTermSet + DefinedTerm + Article スキーマを配置。
+          </strong>
+          : JSON-LDあり。DefinedTermSet + DefinedTerm + Article スキーマを配置。
         </li>
         <li>
           <strong>ページB（このページ）</strong>:

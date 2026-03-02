@@ -85,7 +85,7 @@ export function NavHeader() {
               letterSpacing: "-0.01em",
             }}
           >
-            GEO Lab
+            GEO Findings
           </span>
         </a>
 
@@ -155,7 +155,8 @@ export function NavHeader() {
                 height: "1.5px",
                 background: "var(--neutral)",
                 borderRadius: "2px",
-                transition: "all 0.3s ease",
+                transition:
+                  "transform 0.3s cubic-bezier(.4,0,.2,1), opacity 0.2s",
                 transformOrigin: "center",
                 transform:
                   i === 0

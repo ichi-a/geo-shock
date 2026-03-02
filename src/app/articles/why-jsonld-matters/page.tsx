@@ -13,7 +13,7 @@ const PAGE_URL = `${process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000"
 export const metadata: Metadata = {
   title: "JSON-LDはGEOに効くのか — 実験設計と仮説",
   description:
-    "JSON-LD（構造化データ）はAIクローラーの来訪頻度や生成AIへの反映速度に影響するのか。GEO Labの実験設計と現時点での仮説を解説する。",
+    "JSON-LD（構造化データ）はAIクローラーの来訪頻度や生成AIへの反映速度に影響するのか。GEO Findingsの実験設計と現時点での仮説を解説する。",
   alternates: { canonical: PAGE_URL },
 };
 
@@ -35,7 +35,7 @@ export default function WhyJsonldMattersPage() {
         name: "JSON-LDはGEOに効果がありますか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "GEO Lab の実験では、JSON-LDを配置したページへのAIクローラーのアクセス頻度と、生成AIへの反映速度の差を観測しています。2026年1月時点では観測中であり、断定的な結論は出ていません。",
+          text: "GEO Findings の実験では、JSON-LDを配置したページへのAIクローラーのアクセス頻度と、生成AIへの反映速度の差を観測しています。2026年1月時点では観測中であり、断定的な結論は出ていません。",
         },
       },
       {
@@ -54,10 +54,10 @@ export default function WhyJsonldMattersPage() {
     "@type": "Article",
     headline: "JSON-LDはGEOに効くのか — 実験設計と仮説",
     description:
-      "JSON-LD（構造化データ）のGEOへの効果を実験的に検証するGEO Labのアプローチを解説。",
+      "JSON-LD（構造化データ）のGEOへの効果を実験的に検証するGEO Findingsのアプローチを解説。",
     url: PAGE_URL,
     datePublished: "2025-01-01",
-    author: { "@type": "Organization", name: "GEO Lab" },
+    author: { "@type": "Organization", name: "GEO Findings" },
   };
 
   return (
@@ -75,10 +75,12 @@ export default function WhyJsonldMattersPage() {
         <h1>JSON-LDはGEOに効くのか — 実験設計と仮説</h1>
 
         <div className="mt-6 mb-8 p-5 bg-gray-50 border border-gray-200 rounded-xl">
-          <p className="text-sm font-semibold text-gray-700 mb-2">結論（現時点）</p>
+          <p className="text-sm font-semibold text-gray-700 mb-2">
+            結論（現時点）
+          </p>
           <p className="text-gray-800">
-            JSON-LDがAIクローラーの訪問頻度を増やすという仮説は、
-            GEO Labで観測中。断定はできないが、構造化データが
+            JSON-LDがAIクローラーの訪問頻度を増やすという仮説は、 GEO
+            Findingsで観測中。断定はできないが、構造化データが
             「コンテンツの意味の明確化」に寄与することは理論的に合理的である。
           </p>
         </div>
@@ -96,10 +98,8 @@ export default function WhyJsonldMattersPage() {
           Googleが公式に「構造化データを推奨している」という事実は参考になる。
         </p>
 
-        <h2>GEO Lab の実験設計</h2>
-        <p>
-          GEO Labでは以下の比較実験を行っている。
-        </p>
+        <h2>GEO Findings の実験設計</h2>
+        <p>GEO Findingsでは以下の比較実験を行っている。</p>
 
         <table>
           <thead>
@@ -179,31 +179,44 @@ export default function WhyJsonldMattersPage() {
         <p>
           JSON-LD（JavaScript Object Notation for Linked Data）とは、
           Schema.orgの語彙を使って、ページのコンテンツの意味を機械が読める形式で
-          記述するための構造化データフォーマット。
-          HTMLの <code>&lt;head&gt;</code> 内に
-          <code>&lt;script type=&quot;application/ld+json&quot;&gt;</code> タグで埋め込む。
+          記述するための構造化データフォーマット。 HTMLの{" "}
+          <code>&lt;head&gt;</code> 内に
+          <code>&lt;script type=&quot;application/ld+json&quot;&gt;</code>{" "}
+          タグで埋め込む。
         </p>
 
         <h3>GEO対策としてどのスキーマが有効ですか？</h3>
-        <p>
-          GEO対策として有効と考えられるスキーマは以下のとおり。
-        </p>
+        <p>GEO対策として有効と考えられるスキーマは以下のとおり。</p>
         <ul>
-          <li><strong>Article</strong>: 記事コンテンツの基本。著者・公開日・見出しを定義。</li>
-          <li><strong>FAQPage</strong>: 質問と回答のペアをAIが直接参照しやすい形で提供。</li>
-          <li><strong>DefinedTerm / DefinedTermSet</strong>: 新しい概念・造語をAIに定義として教える。</li>
-          <li><strong>HowTo</strong>: 手順を構造化。AIの「〜の方法は？」という質問に応えやすい。</li>
-          <li><strong>Dataset</strong>: 実験データや統計を持つサイトに有効。</li>
+          <li>
+            <strong>Article</strong>:
+            記事コンテンツの基本。著者・公開日・見出しを定義。
+          </li>
+          <li>
+            <strong>FAQPage</strong>:
+            質問と回答のペアをAIが直接参照しやすい形で提供。
+          </li>
+          <li>
+            <strong>DefinedTerm / DefinedTermSet</strong>:
+            新しい概念・造語をAIに定義として教える。
+          </li>
+          <li>
+            <strong>HowTo</strong>:
+            手順を構造化。AIの「〜の方法は？」という質問に応えやすい。
+          </li>
+          <li>
+            <strong>Dataset</strong>: 実験データや統計を持つサイトに有効。
+          </li>
         </ul>
 
         <h3>JSON-LDはGEOに効果がありますか？</h3>
         <p>
-          GEO Lab の実験で観測中。断定的な結論は出ていない。
+          GEO Findings の実験で観測中。断定的な結論は出ていない。
           観測結果は随時このサイトで公開する。
         </p>
 
         <div className="mt-10 pt-6 border-t border-gray-100 text-sm text-gray-500">
-          <p>公開日: 2026-02-22 / GEO Lab</p>
+          <p>公開日: 2026-02-22 / GEO Findings</p>
         </div>
       </article>
     </>

@@ -4,8 +4,8 @@ import { JsonLd } from "@/components/JsonLd";
 const PAGE_URL = `${process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000"}/experiments`;
 
 export const metadata = {
-  title: "実験ログ — GEO Lab",
-  description: "GEO Labで進行中の実験一覧と観測状況。",
+  title: "実験ログ — GEO Findings",
+  description: "GEO Findingsで進行中の実験一覧と観測状況。",
   alternates: { canonical: PAGE_URL },
 };
 
@@ -104,11 +104,11 @@ export default function ExperimentsPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Dataset",
-    name: "GEO Lab 実験観測データ",
+    name: "GEO Findings 実験観測データ",
     description:
       "AIクローラーの挙動観測、JSON-LDの効果検証、造語の生成AI反映速度を記録した実験データセット。",
     url: PAGE_URL,
-    creator: { "@type": "Organization", name: "GEO Lab" },
+    creator: { "@type": "Organization", name: "GEO Findings" },
     dateCreated: "2026-02-22",
     license: "https://creativecommons.org/licenses/by/4.0/",
   };
@@ -142,7 +142,7 @@ export default function ExperimentsPage() {
             lineHeight: 1.6,
           }}
         >
-          GEO Lab
+          GEO Findings
           で進行中の実験一覧。観測データは蓄積次第、各実験ページで公開します。
         </p>
       </div>

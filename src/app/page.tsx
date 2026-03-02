@@ -7,7 +7,7 @@ export default function HomePage() {
   const siteJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "GEO Lab",
+    name: "GEO Findings",
     url: siteUrl,
     description: "AIクローラーの挙動をリバースエンジニアリングする実験サイト。",
   };
@@ -83,7 +83,8 @@ export default function HomePage() {
             maxWidth: "560px",
           }}
         >
-          GEO Lab は、AIクローラーの挙動を観測・記録・公開する実験サイトです。
+          GEO Findings
+          は、AIクローラーの挙動を観測・記録・公開する実験サイトです。
           JSON-LDの有無、造語の浸透速度を実データで検証します。
         </p>
         <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>

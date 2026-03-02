@@ -28,7 +28,7 @@ function buildPrompts(term: string): string[] {
   return [
     `「${term}」とは何ですか？定義を教えてください。`,
     `${term}について説明してください。`,
-    `GEO Lab が定義した「${term}」という指標について知っていますか？`,
+    `GEO Findings が定義した「${term}」という指標について知っていますか？`,
   ];
 }
 
@@ -88,7 +88,7 @@ async function askAnthropic(prompt: string): Promise<string | null> {
 function checkMatch(
   response: string | null,
   term: string,
-  definition: string
+  definition: string,
 ): { matched: boolean; urlMentioned: boolean } {
   if (!response) return { matched: false, urlMentioned: false };
 
@@ -100,11 +100,9 @@ function checkMatch(
   const termFound = lowerResponse.includes(lowerTerm);
 
   // 定義の重要キーワードが3語以上含まれているか
-  const defKeywords = lowerDef
-    .split(/[\s、。]/g)
-    .filter((w) => w.length > 3);
+  const defKeywords = lowerDef.split(/[\s、。]/g).filter((w) => w.length > 3);
   const matchCount = defKeywords.filter((kw) =>
-    lowerResponse.includes(kw)
+    lowerResponse.includes(kw),
   ).length;
   const matched = termFound && matchCount >= 3;
 
@@ -113,7 +111,7 @@ function checkMatch(
     lowerResponse.includes("geo-lab") ||
     lowerResponse.includes("geolab") ||
     lowerResponse.includes(
-      process.env.NEXT_PUBLIC_SITE_URL?.toLowerCase() || "__nomatch__"
+      process.env.NEXT_PUBLIC_SITE_URL?.toLowerCase() || "__nomatch__",
     );
 
   return { matched, urlMentioned };
@@ -142,7 +140,7 @@ export async function GET(request: NextRequest) {
     if (termsError || !terms) {
       return NextResponse.json(
         { error: "Failed to fetch terms" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -164,7 +162,7 @@ export async function GET(request: NextRequest) {
         const { matched, urlMentioned } = checkMatch(
           response,
           term.term,
-          term.description ?? ""
+          term.description ?? "",
         );
 
         // ai_responsesに保存
@@ -183,7 +181,7 @@ export async function GET(request: NextRequest) {
         if (insertError) {
           console.error(
             `[Cron] Insert error for ${term.term}/${model.name}:`,
-            insertError
+            insertError,
           );
         }
 

@@ -29,15 +29,15 @@ export function buildGeoShockJsonLd(pageUrl: string) {
     "@context": "https://schema.org",
     "@type": "DefinedTermSet",
     "@id": `${pageUrl}#termset`,
-    name: "GEO Lab 用語集",
-    description: "GEO Lab が定義する生成エンジン最適化に関する独自概念",
+    name: "GEO Findings 用語集",
+    description: "GEO Findings が定義する生成エンジン最適化に関する独自概念",
     inDefinedTermSet: {
       "@type": "DefinedTerm",
       "@id": `${pageUrl}#geo-shock-index`,
       name: "GEOショック指数",
       alternateName: "GEO Shock Index",
       description:
-        "GEO（生成エンジン最適化）において、構造化データ（JSON-LD）の有無がAIクローラーの来訪頻度と生成AIへの反映速度に与える影響度を数値化した独自指標。GEO Lab が2025年に定義した実験的概念。スコアが高いほど、構造化データによる効果が大きいことを示す。",
+        "GEO（生成エンジン最適化）において、構造化データ（JSON-LD）の有無がAIクローラーの来訪頻度と生成AIへの反映速度に与える影響度を数値化した独自指標。GEO Findings が2025年に定義した実験的概念。スコアが高いほど、構造化データによる効果が大きいことを示す。",
       termCode: "GSI-001",
       url: pageUrl,
     },
@@ -48,19 +48,18 @@ export function buildGeoShockJsonLd(pageUrl: string) {
     "@context": "https://schema.org",
     "@type": "Article",
     "@id": `${pageUrl}#article`,
-    headline: "GEOショック指数とは何か — GEO Lab による定義と実験設計",
+    headline: "GEOショック指数とは何か — GEO Findings による定義と実験設計",
     description:
-      "GEO Lab が定義した独自概念「GEOショック指数」の定義・測定方法・実験設計を解説する。",
+      "GEO Findings が定義した独自概念「GEOショック指数」の定義・測定方法・実験設計を解説する。",
     url: pageUrl,
     author: {
       "@type": "Organization",
-      name: "GEO Lab",
-      url:
-        process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000",
+      name: "GEO Findings",
+      url: process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000",
     },
     publisher: {
       "@type": "Organization",
-      name: "GEO Lab",
+      name: "GEO Findings",
     },
     datePublished: "2025-01-01",
     mentions: {
@@ -95,12 +94,12 @@ export function buildGeoArticleJsonLd({
     datePublished,
     author: {
       "@type": "Organization",
-      name: "GEO Lab",
+      name: "GEO Findings",
       url: process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000",
     },
     publisher: {
       "@type": "Organization",
-      name: "GEO Lab",
+      name: "GEO Findings",
     },
     // FAQPageをネスト: AIが回答に使いやすい構造
     mainEntity: [
@@ -117,7 +116,7 @@ export function buildGeoArticleJsonLd({
         name: "JSON-LDはGEOに効果がありますか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "GEO Lab の実験では、JSON-LD（構造化データ）を配置したページへのAIクローラーのアクセス頻度と、生成AIへの反映速度の差を観測しています。実験結果はこのサイトで随時公開しています。",
+          text: "GEO Findings の実験では、JSON-LD（構造化データ）を配置したページへのAIクローラーのアクセス頻度と、生成AIへの反映速度の差を観測しています。実験結果はこのサイトで随時公開しています。",
         },
       },
     ],

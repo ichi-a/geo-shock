@@ -34,12 +34,19 @@ export async function POST(request: NextRequest) {
 
     // 入力バリデーション
     if (!ip || !path) {
-      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Missing required fields" },
+        { status: 400 },
+      );
     }
 
     // ボット判定・ハッシュ化（lib/bot-detection.ts）
-    const { ip_hash, bot_type, verification_level, asn: resolvedAsn } =
-      await analyzeBotRequest({ ip, ua, asn });
+    const {
+      ip_hash,
+      bot_type,
+      verification_level,
+      asn: resolvedAsn,
+    } = await analyzeBotRequest({ ip, ua, asn });
 
     // Supabaseへ保存（サービスロール = RLSバイパス）
     const { error } = await supabaseAdmin.from("access_logs").insert({
@@ -54,13 +61,13 @@ export async function POST(request: NextRequest) {
     });
 
     if (error) {
-      console.error("[GEO Lab] Supabase insert error:", error);
+      console.error("[GEO Findings] Supabase insert error:", error);
       return NextResponse.json({ error: "DB error" }, { status: 500 });
     }
 
     return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error("[GEO Lab] Log API error:", err);
+    console.error("[GEO Findings] Log API error:", err);
     return NextResponse.json({ error: "Internal error" }, { status: 500 });
   }
 }

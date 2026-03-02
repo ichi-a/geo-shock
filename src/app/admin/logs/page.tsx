@@ -40,9 +40,7 @@ export default async function AdminLogsPage() {
 
   if (error) {
     return (
-      <div className="p-8 text-red-600">
-        データ取得エラー: {error.message}
-      </div>
+      <div className="p-8 text-red-600">データ取得エラー: {error.message}</div>
     );
   }
 
@@ -55,7 +53,9 @@ export default async function AdminLogsPage() {
         {/* ヘッダー */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-2xl font-bold font-mono">GEO Lab / Admin</h1>
+            <h1 className="text-2xl font-bold font-mono">
+              GEO Findings / Admin
+            </h1>
             <p className="text-gray-400 text-sm mt-1">
               AIクローラーアクセスログ観測ダッシュボード
             </p>

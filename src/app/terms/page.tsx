@@ -55,7 +55,7 @@ export default function TermsPage() {
             lineHeight: 1.6,
           }}
         >
-          GEO Lab
+          GEO Findings
           が定義した独自概念の一覧。各造語はJSON-LDあり（実験群）となし（対照群）の
           ページを並行公開し、AIへの反映速度を観測中。
         </p>

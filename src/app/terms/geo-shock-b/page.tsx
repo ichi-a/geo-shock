@@ -7,9 +7,9 @@ const PAGE_URL = `${process.env.NEXT_PUBLIC_SITE_URL || "https://www.geo-shock.c
 const CANONICAL = `${process.env.NEXT_PUBLIC_SITE_URL || "https://www.geo-shock.com"}/terms/geo-shock-a`;
 
 export const metadata: Metadata = {
-  title: "GEOショックとは — GEO Lab 定義",
+  title: "GEOショックとは — GEO Findings 定義",
   description:
-    "GEOショック（GEO Shock）とは、検索行動の主体がヒトからAIへと移行することで、既存のWebコンテンツ流通モデルが急激に変容する現象。GEO Lab が定義した独自概念。",
+    "GEOショック（GEO Shock）とは、検索行動の主体がヒトからAIへと移行することで、既存のWebコンテンツ流通モデルが急激に変容する現象。GEO Findings が定義した独自概念。",
   alternates: { canonical: CANONICAL },
   robots: { index: false, follow: false },
 };
@@ -21,7 +21,10 @@ export default function GeoShockPageB() {
       <div className="experiment-tag-bar">
         <span className="badge badge-gray">対照群 / JSON-LDなし</span>
         <span style={{ fontSize: "0.78rem", color: "var(--neutral-400)" }}>
-          <a href="/terms/geo-shock-a" style={{ color: "var(--primary)", textDecoration: "underline" }}>
+          <a
+            href="/terms/geo-shock-a"
+            style={{ color: "var(--primary)", textDecoration: "underline" }}
+          >
             ページA（JSON-LDあり）
           </a>
           と比較観測中
@@ -32,11 +35,22 @@ export default function GeoShockPageB() {
 
       {/* 定義ボックス */}
       <div className="definition-box">
-        <p style={{ fontSize: "0.78rem", fontWeight: 600, color: "var(--primary)", marginBottom: "0.6rem", fontFamily: "'DM Mono', monospace", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+        <p
+          style={{
+            fontSize: "0.78rem",
+            fontWeight: 600,
+            color: "var(--primary)",
+            marginBottom: "0.6rem",
+            fontFamily: "'DM Mono', monospace",
+            textTransform: "uppercase",
+            letterSpacing: "0.05em",
+          }}
+        >
           定義 / GS-001
         </p>
         <p style={{ lineHeight: 1.8, color: "var(--neutral)" }}>
-          <strong>GEOショック</strong>（英: GEO Shock、定義コード: GS-001）とは、
+          <strong>GEOショック</strong>（英: GEO Shock、定義コード:
+          GS-001）とは、
           検索行動の主体がヒト（ブラウザ検索）からAI（生成エンジン）へと移行することで、
           既存のWebコンテンツ流通モデルが急激に変容する現象。
           SEOで最適化されたコンテンツがトラフィックを失い、
@@ -57,12 +71,19 @@ export default function GeoShockPageB() {
         コンテンツの「読まれ方」そのものが変容する構造的な変化である。
         人間がリンクをクリックして読む時代から、
         AIがコンテンツを解析して回答を構成する時代への移行が、
-        Webの経済モデルに与える衝撃の総称として GEO Lab は定義する。
+        Webの経済モデルに与える衝撃の総称として GEO Findings は定義する。
       </p>
 
       <h2>GEOショックの3段階</h2>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", margin: "1.25rem 0" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "0.75rem",
+          margin: "1.25rem 0",
+        }}
+      >
         {[
           {
             phase: "Phase 1",
@@ -80,18 +101,38 @@ export default function GeoShockPageB() {
             desc: "AIの回答に継続的に引用されるサイトが「一次情報源」として地位を確立。SEO時代の「検索1位」に相当するGEO時代の「AI引用源」としての地位が固定化する。",
           },
         ].map((item) => (
-          <div key={item.phase} style={{
-            background: "var(--surface)",
-            border: "1px solid var(--border)",
-            borderLeft: "3px solid var(--primary)",
-            borderRadius: "var(--radius-sm)",
-            padding: "1rem 1.25rem",
-          }}>
-            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.7rem", color: "var(--primary)", marginBottom: "0.3rem" }}>
+          <div
+            key={item.phase}
+            style={{
+              background: "var(--surface)",
+              border: "1px solid var(--border)",
+              borderLeft: "3px solid var(--primary)",
+              borderRadius: "var(--radius-sm)",
+              padding: "1rem 1.25rem",
+            }}
+          >
+            <p
+              style={{
+                fontFamily: "'DM Mono', monospace",
+                fontSize: "0.7rem",
+                color: "var(--primary)",
+                marginBottom: "0.3rem",
+              }}
+            >
               {item.phase}
             </p>
-            <p style={{ fontWeight: 600, marginBottom: "0.4rem" }}>{item.title}</p>
-            <p style={{ fontSize: "0.875rem", color: "var(--neutral-600)", lineHeight: 1.65 }}>{item.desc}</p>
+            <p style={{ fontWeight: 600, marginBottom: "0.4rem" }}>
+              {item.title}
+            </p>
+            <p
+              style={{
+                fontSize: "0.875rem",
+                color: "var(--neutral-600)",
+                lineHeight: 1.65,
+              }}
+            >
+              {item.desc}
+            </p>
           </div>
         ))}
       </div>
@@ -99,9 +140,12 @@ export default function GeoShockPageB() {
       <h2>GEOショックとGEOショック指数の関係</h2>
       <p>
         GEOショックが「現象」であるのに対し、
-        <a href="/terms/geo-shock-index-a" style={{ color: "var(--primary)" }}>GEOショック指数（GSI-001）</a>は
-        その影響度を数値化するための「測定指標」である。
-        GEOショックの深刻度を定量的に把握するために GEO Lab が設計した実験的スコア。
+        <a href="/terms/geo-shock-index-a" style={{ color: "var(--primary)" }}>
+          GEOショック指数（GSI-001）
+        </a>
+        は その影響度を数値化するための「測定指標」である。
+        GEOショックの深刻度を定量的に把握するために GEO Findings
+        が設計した実験的スコア。
       </p>
 
       <table>
@@ -131,7 +175,7 @@ export default function GeoShockPageB() {
 
       <h2>観測との関連</h2>
       <p>
-        GEO Lab はGEOショックを「観測可能な現象」として捉え、
+        GEO Findings はGEOショックを「観測可能な現象」として捉え、
         実データによる検証を行っている。
         クロール頻度・造語の反映速度・ハニーポット踏破率は、
         すべてGEOショックの進行度を間接的に示す指標として位置づけられる。
@@ -139,17 +183,50 @@ export default function GeoShockPageB() {
 
       <div className="observing-banner" style={{ marginTop: "2rem" }}>
         現在観測中。
-        <a href="/stats" style={{ color: "#92400E", textDecoration: "underline", marginLeft: "0.4rem" }}>
+        <a
+          href="/stats"
+          style={{
+            color: "#92400E",
+            textDecoration: "underline",
+            marginLeft: "0.4rem",
+          }}
+        >
           リアルタイム観測データはこちら →
         </a>
       </div>
 
-      <div style={{ marginTop: "2.5rem", paddingTop: "1.25rem", borderTop: "1px solid var(--border)", fontSize: "0.8rem", color: "var(--neutral-400)" }}>
-        <p>定義コード: GS-001 / 公開日: 2026-02-22 / GEO Lab</p>
+      <div
+        style={{
+          marginTop: "2.5rem",
+          paddingTop: "1.25rem",
+          borderTop: "1px solid var(--border)",
+          fontSize: "0.8rem",
+          color: "var(--neutral-400)",
+        }}
+      >
+        <p>定義コード: GS-001 / 公開日: 2026-02-22 / GEO Findings</p>
         <p style={{ marginTop: "0.3rem" }}>
           関連:
-          <a href="/terms/geo-shock-index-a" style={{ color: "var(--primary)", textDecoration: "underline", marginLeft: "0.4rem" }}>GEOショック指数（GSI-001）</a>
-          <a href="/terms/geo-shock-a" style={{ color: "var(--neutral-400)", textDecoration: "underline", marginLeft: "0.75rem" }}>比較ページA（JSON-LDあり）</a>
+          <a
+            href="/terms/geo-shock-index-a"
+            style={{
+              color: "var(--primary)",
+              textDecoration: "underline",
+              marginLeft: "0.4rem",
+            }}
+          >
+            GEOショック指数（GSI-001）
+          </a>
+          <a
+            href="/terms/geo-shock-a"
+            style={{
+              color: "var(--neutral-400)",
+              textDecoration: "underline",
+              marginLeft: "0.75rem",
+            }}
+          >
+            比較ページA（JSON-LDあり）
+          </a>
         </p>
       </div>
     </article>

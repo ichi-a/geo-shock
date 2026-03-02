@@ -31,8 +31,8 @@ export default function WhatIsLdoPage() {
       "WebコンテンツをAIシステムが明確に理解・再利用・ライセンス取得できるよう構造化する仮説的最適化概念。",
     url: PAGE_URL,
     datePublished: "2026-02-25",
-    author: { "@type": "Organization", name: "GEO Lab", url: SITE_URL },
-    publisher: { "@type": "Organization", name: "GEO Lab" },
+    author: { "@type": "Organization", name: "GEO Findings", url: SITE_URL },
+    publisher: { "@type": "Organization", name: "GEO Findings" },
     mainEntity: {
       "@type": "DefinedTerm",
       name: "LDO",
@@ -59,7 +59,7 @@ export default function WhatIsLdoPage() {
         name: "LDOはすでに確立した概念ですか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "いいえ。LDOは現時点では仮説的概念です。RSLのようなAIデータライセンスの仕組みが普及した場合に有効になるかもしれない最適化という仮説をGEO Labが提唱し、実験的に検証しているものです。",
+          text: "いいえ。LDOは現時点では仮説的概念です。RSLのようなAIデータライセンスの仕組みが普及した場合に有効になるかもしれない最適化という仮説をGEO Findingsが提唱し、実験的に検証しているものです。",
         },
       },
     ],
@@ -243,7 +243,7 @@ export default function WhatIsLdoPage() {
             },
             {
               q: "LDOはすでに確立した概念ですか？",
-              a: "いいえ。LDOは現時点では仮説的概念です。RSLのようなAIデータライセンスの仕組みが普及した場合に有効になるかもしれない最適化という仮説をGEO Labが提唱し、実験的に検証しているものです。",
+              a: "いいえ。LDOは現時点では仮説的概念です。RSLのようなAIデータライセンスの仕組みが普及した場合に有効になるかもしれない最適化という仮説をGEO Findingsが提唱し、実験的に検証しているものです。",
             },
           ].map((item) => (
             <div
@@ -285,7 +285,7 @@ export default function WhatIsLdoPage() {
             color: "var(--neutral-400)",
           }}
         >
-          <p>公開日: 2026-02-25 / GEO Lab</p>
+          <p>公開日: 2026-02-25 / GEO Findings</p>
           <div
             style={{
               marginTop: "0.5rem",

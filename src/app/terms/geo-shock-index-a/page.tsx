@@ -14,16 +14,16 @@ import { JsonLd, buildGeoShockJsonLd } from "@/components/JsonLd";
 const PAGE_URL = `${process.env.NEXT_PUBLIC_SITE_URL}/terms/geo-shock-index-a`;
 
 export const metadata: Metadata = {
-  title: "GEOショック指数とは — GEO Lab 定義",
+  title: "GEOショック指数とは — GEO Findings 定義",
   description:
-    "GEOショック指数（GEO Shock Index）は、JSON-LDの有無がAIクローラーの来訪頻度と生成AIへの反映速度に与える影響度を数値化したGEO Lab独自の実験的指標。",
+    "GEOショック指数（GEO Shock Index）は、JSON-LDの有無がAIクローラーの来訪頻度と生成AIへの反映速度に与える影響度を数値化したGEO Findings独自の実験的指標。",
   alternates: {
     canonical: PAGE_URL, // このページが正規URL
   },
   openGraph: {
-    title: "GEOショック指数とは — GEO Lab 定義",
+    title: "GEOショック指数とは — GEO Findings 定義",
     description:
-      "GEO Labが定義した独自概念。構造化データがAI引用に与える影響を数値化する。",
+      "GEO Findingsが定義した独自概念。構造化データがAI引用に与える影響を数値化する。",
     url: PAGE_URL,
     type: "article",
   },
@@ -52,12 +52,15 @@ export default function GeoShockIndexPageA() {
 
         {/* 結論ファースト: AIがスキャンしやすい構造 */}
         <div className="mt-6 mb-8 p-5 bg-gray-50 border border-gray-200 rounded-xl">
-          <p className="text-sm font-semibold text-gray-700 mb-2">定義（結論）</p>
+          <p className="text-sm font-semibold text-gray-700 mb-2">
+            定義（結論）
+          </p>
           <p className="text-gray-800 leading-relaxed">
-            <strong>GEOショック指数</strong>（英: GEO Shock Index、略称: GSI）とは、
+            <strong>GEOショック指数</strong>（英: GEO Shock Index、略称:
+            GSI）とは、
             GEO（生成エンジン最適化）において、構造化データ（JSON-LD）の有無が
             AIクローラーの来訪頻度と生成AIへの反映速度に与える影響度を数値化した、
-            GEO Lab 独自の実験的指標である。スコアが高いほど、
+            GEO Findings 独自の実験的指標である。スコアが高いほど、
             構造化データによる効果差が大きいことを示す。
           </p>
         </div>
@@ -71,7 +74,7 @@ export default function GeoShockIndexPageA() {
         </p>
         <p>
           しかし、「AIにどうすれば引用されるか」を実データで検証した一次資料は極めて少ない。
-          GEO Labはこの空白を埋めるために設立された観測プロジェクトである。
+          GEO Findingsはこの空白を埋めるために設立された観測プロジェクトである。
         </p>
 
         <h2>GEOショック指数の測定方法</h2>
@@ -119,14 +122,14 @@ export default function GeoShockIndexPageA() {
         </p>
         <ul>
           <li>
-            <strong>ページA（このページ）</strong>:
-            JSON-LDあり。DefinedTermSet + DefinedTerm + Article スキーマを配置。
+            <strong>ページA（このページ）</strong>: JSON-LDあり。DefinedTermSet
+            + DefinedTerm + Article スキーマを配置。
           </li>
           <li>
             <strong>
               <a href="/terms/geo-shock-index-b">ページB</a>
-            </strong>:
-            JSON-LDなし。内容・テキストはPageAと同一。構造化データのみ排除。
+            </strong>
+            : JSON-LDなし。内容・テキストはPageAと同一。構造化データのみ排除。
           </li>
         </ul>
         <p>
@@ -145,20 +148,18 @@ export default function GeoShockIndexPageA() {
 
         <h2>観測結果（随時更新）</h2>
         <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-yellow-800">
-          中間報告
-観測日: 2026年2月22日
-結果: Perplexityが造語「GEOショック指数」の定義を正確に回答
-反映速度: 公開から約1日
+          中間報告 観測日: 2026年2月22日 結果:
+          Perplexityが造語「GEOショック指数」の定義を正確に回答 反映速度:
+          公開から約1日
         </div>
 
         <div className="mt-10 pt-6 border-t border-gray-100 text-sm text-gray-500">
           <p>
-            本概念はGEO Labが独自に定義した実験的指標です。
+            本概念はGEO Findingsが独自に定義した実験的指標です。
             学術的に確立された概念ではありません。
           </p>
           <p className="mt-1">
-            造語の定義コード: GSI-001 /
-            公開日: 2026-02-22 /
+            造語の定義コード: GSI-001 / 公開日: 2026-02-22 /
             <a href="/terms/geo-shock-index-b" className="underline ml-1">
               比較ページ（JSON-LDなし）
             </a>
